@@ -1,7 +1,42 @@
-# Mars-Earth Grazing-Impact SWIFT Trial
+# Mars-Earth Grazing Collision
 
-This directory is a local first-pass setup for a visually useful Mars-Earth grazing encounter in SWIFT.
-It is built for workflow validation and animation prototyping, not yet for quantitative claims.
+This repository contains a SWIFT/WoMa SPH setup and render pipeline for a
+near-grazing Earth-Mars collision visualization.  The current products are
+intended for scientifically informed presentation and animation development:
+they use differentiated ANEOS bodies, settled-body initial conditions, and
+advected tracer colors on Earth's surface and the Mars impactor.
+
+The latest direct inertial-frame animation is:
+
+[outputs/movies/mars_earth_grazing_settled_n200000_9h_direct_view_45s.mp4](outputs/movies/mars_earth_grazing_settled_n200000_9h_direct_view_45s.mp4)
+
+An ApJ-style draft manuscript is available as both source and PDF:
+
+- [paper/mars_earth_collision_apj.tex](paper/mars_earth_collision_apj.tex)
+- [paper/mars_earth_collision_apj.pdf](paper/mars_earth_collision_apj.pdf)
+
+## Direct-View Sequence
+
+Frames below are extracted from the final 45-second inertial-frame animation.
+
+| Initial | Approach |
+|---|---|
+| ![Initial frame](docs/figures/direct_view_00_start.png) | ![Approach frame](docs/figures/direct_view_01_approach.png) |
+
+| Maximum interaction | Departure |
+|---|---|
+| ![Contact frame](docs/figures/direct_view_02_contact.png) | ![Departure frame](docs/figures/direct_view_03_departure.png) |
+
+| Final 9-hour state |
+|---|
+| ![Final frame](docs/figures/direct_view_04_final.png) |
+
+## Current Status
+
+The repository is not yet a convergence-tested publication-results archive.
+Large multi-GB snapshot time series are documented in
+[manifests/LARGE_ARTIFACTS.md](manifests/LARGE_ARTIFACTS.md) rather than stored
+directly in Git.
 
 ## What is here
 
