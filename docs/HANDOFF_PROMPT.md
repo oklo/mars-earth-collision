@@ -76,89 +76,92 @@ Do not present the current result as a robust physical boundary between merger,
 hit-and-run, erosion, or satellite-forming regimes.  It is a scientifically
 grounded visualization and a starting point for quantitative analysis.
 
+## Live 9-to-19h Continuation
+
+As of 2026-07-25 15:01 PDT, the headline 200k-particle run has been
+extended from 9 simulated hours to 19 simulated hours.  It is running in the
+original SWIFT working tree under a per-user macOS `launchd` job wrapped by
+`caffeinate`, so ordinary terminal closure, display sleep, or screensaver state
+should not stop the calculation.
+
+Original SWIFT working-tree artifacts:
+
+```text
+/Users/greglaughlin/Projects/earth-mars-swift/trial_mars_earth_grazing/mars_earth_grazing_settled_n200000_9h_to_19h.yml
+/Users/greglaughlin/Projects/earth-mars-swift/trial_mars_earth_grazing/mars_earth_grazing_settled_n200000_9h_to_19h_ic.hdf5
+/Users/greglaughlin/Projects/earth-mars-swift/trial_mars_earth_grazing/snapshots_settled_n200000_9h_to_19h/
+/Users/greglaughlin/Projects/earth-mars-swift/trial_mars_earth_grazing/logs/impact_19h_continuation_n200000.log
+/Users/greglaughlin/Projects/earth-mars-swift/trial_mars_earth_grazing/logs/com.greglaughlin.mars-earth.19h.plist
+```
+
+The compact continuation config and IC have also been copied into the GitHub
+project:
+
+```text
+configs/mars_earth_grazing_settled_n200000_9h_to_19h.yml
+data/mars_earth_grazing_settled_n200000_9h_to_19h_ic.hdf5
+```
+
+Run details:
+
+```text
+launchd label: com.greglaughlin.mars-earth.19h
+verified SWIFT PID at launch: 11084
+time_begin: 32400 s
+time_end: 68400 s
+snapshot cadence: 60 s
+expected final snapshot index: 0600
+particles: 218271 gas/SPH particles
+threads: 12
+```
+
+The continuation IC was copied from:
+
+```text
+snapshots_settled_n200000_9h_continuation/mars_earth_grazing_settled_n200000_9h_continuation_0180.hdf5
+```
+
+It preserves particle ordering and `ParticleIDs`, with the compatibility aliases
+`Density`, `InternalEnergy`, and `SmoothingLength` added to match the previous
+6-to-9-hour continuation IC.
+
+Monitor the live run with:
+
+```bash
+cd /Users/greglaughlin/Projects/earth-mars-swift/trial_mars_earth_grazing
+launchctl print gui/$(id -u)/com.greglaughlin.mars-earth.19h | grep -E 'state =|pid =|runs =|last exit code'
+tail -f logs/impact_19h_continuation_n200000.log
+find snapshots_settled_n200000_9h_to_19h -maxdepth 1 -name '*.hdf5' | wc -l
+```
+
+To stop the launchd job intentionally:
+
+```bash
+launchctl bootout gui/$(id -u) logs/com.greglaughlin.mars-earth.19h.plist
+```
+
+Do not stop it unless there is a clear reason: a SWIFT failure, runaway disk
+use, thermal problem, or an explicit user request.
+
 ## Immediate Next Task
 
-First priority: extend the headline 200k-particle simulation by another
-10 simulated hours, from the current 9-hour endpoint to 19 hours.
+First priority: when the live 9-to-19-hour continuation completes, analyze the
+late-time Mars-rich remnant.  The scientific question is whether the departing
+Mars-rich body reconsolidates, remains a disrupted elongated remnant, or forms
+a large bound satellite/secondary companion of its own.
 
-Scientific question: does the departing Mars-rich remnant reconsolidate, remain
-a disrupted elongated body, or form a large bound satellite/secondary companion
-of its own?
+Recommended sequence:
 
-Expected work:
-
-1. Work in the original SWIFT working directory:
-
-   ```bash
-   cd /Users/greglaughlin/Projects/earth-mars-swift/trial_mars_earth_grazing
-   ```
-
-2. Identify the last 9-hour snapshot:
+1. Confirm the run completed normally.  The expected final snapshot is:
 
    ```text
-   snapshots_settled_n200000_9h_continuation/mars_earth_grazing_settled_n200000_9h_continuation_0180.hdf5
+   snapshots_settled_n200000_9h_to_19h/mars_earth_grazing_settled_n200000_9h_to_19h_0600.hdf5
    ```
 
-   The 6-to-9-hour continuation config runs from `time_begin: 21600` to
-   `time_end: 32400` seconds with snapshots every 60 seconds.  A 10-hour
-   extension should run to `68400` seconds.
+   Check the SWIFT log for normal termination and conservation diagnostics.
 
-3. Create a new continuation initial-condition file from the 9-hour final
-   snapshot.  Use the same basic pattern as the prior 6-to-9-hour continuation:
-   a standalone HDF5 IC loaded at `time_begin: 32400`.  If the existing scripts
-   already provide a robust copy/box/metadata path, use them.  Otherwise inspect
-   the previous `mars_earth_grazing_settled_n200000_6h_to_9h_ic.hdf5` and
-   reproduce the minimal required snapshot-to-IC structure without changing
-   particle IDs.
-
-4. Add a config such as:
-
-   ```text
-   mars_earth_grazing_settled_n200000_9h_to_19h.yml
-   ```
-
-   Use:
-
-   ```yaml
-   InitialConditions:
-       file_name:  mars_earth_grazing_settled_n200000_9h_to_19h_ic.hdf5
-       periodic:   0
-
-   TimeIntegration:
-       time_begin:     32400
-       time_end:       68400
-       dt_min:         0.000001
-       dt_max:         30
-
-   Snapshots:
-       subdir:             snapshots_settled_n200000_9h_to_19h
-       basename:           mars_earth_grazing_settled_n200000_9h_to_19h
-       time_first:         32400
-       delta_time:         60
-
-   Statistics:
-       time_first: 32400
-       delta_time: 120
-   ```
-
-   Keep the SPH, gravity, units, and EOS settings consistent with
-   `configs/mars_earth_grazing_settled_n200000_9h_continuation.yml`.
-
-5. Run with the entropy-evolving impact SWIFT binary:
-
-   ```bash
-   DYLD_LIBRARY_PATH=/Users/greglaughlin/Projects/earth-mars-swift/.conda-swift/lib \
-   /Users/greglaughlin/Projects/earth-mars-swift/swift-impact/swift \
-     --hydro --self-gravity --threads=12 \
-     mars_earth_grazing_settled_n200000_9h_to_19h.yml
-   ```
-
-   Adjust thread count conservatively if the machine is under load.  Capture
-   stdout/stderr to a log under `logs/`.
-
-6. After completion, build a combined 19-hour snapshot view, preferably by
-   symlinking the existing 0-to-6-hour, 6-to-9-hour, and 9-to-19-hour snapshots
-   into a new continuous directory:
+2. Build a combined 19-hour snapshot view by symlinking the existing 0-to-6-hour,
+   6-to-9-hour, and 9-to-19-hour snapshots into a new continuous directory:
 
    ```text
    snapshots_settled_n200000_19h_combined/
@@ -170,7 +173,21 @@ Expected work:
    mars_earth_grazing_settled_n200000_19h_combined_0000.hdf5
    ```
 
-7. Render at least one updated direct inertial-frame movie and one diagnostic
+3. Analyze the Mars remnant and possible satellite:
+
+   - Identify Mars-origin particles using `BodyID == 2` from the label file.
+   - Find bound clumps in the Mars-origin material at late times.
+   - Compute mass, COM, velocity, angular momentum, and approximate binding
+     energy of the main Mars remnant and any secondary clump.
+   - Check whether a candidate companion is bound to the Mars remnant and
+     whether it lies outside the remnant's Roche-like disruption region.
+   - Compare to Earth binding as well: distinguish a true Mars satellite from
+     a transient fragment, Earth-bound debris, or unbound ejecta.
+   - Produce a short note with caveats about resolution, SPH clump finding, and
+     the fact that this is one high-impact visualization run rather than a
+     convergence-tested parameter survey.
+
+4. Render at least one updated direct inertial-frame movie and one diagnostic
    final-state still.  Reuse:
 
    ```text
@@ -200,25 +217,13 @@ Expected work:
      --clock-fontsize 9.5
    ```
 
-8. Analyze the Mars remnant and possible satellite:
-
-   - Identify Mars-origin particles using `BodyID == 2`.
-   - Find bound clumps in the Mars-origin material at late times.
-   - Compute mass, COM, velocity, angular momentum, and approximate binding
-     energy of the main Mars remnant and any secondary clump.
-   - Check whether a candidate companion is bound to the Mars remnant and
-     whether it lies outside the remnant's Roche-like disruption region.
-   - Compare to Earth binding as well: distinguish a true Mars satellite from
-     a transient fragment, Earth-bound debris, or unbound ejecta.
-   - Produce a short note with caveats about resolution and SPH clump finding.
-
-9. Update the GitHub-ready project after the extension:
+5. Update the GitHub-ready project after the extension:
 
    - Copy new scripts/configs/compact products/rendered movies/QC frames into
      `/Users/greglaughlin/Projects/mars-earth-collision`.
    - Do not commit multi-GB snapshot directories to Git.
-   - Update `manifests/LARGE_ARTIFACTS.md` with the new 9-to-19-hour snapshot
-     directory size and location.
+   - Update `manifests/LARGE_ARTIFACTS.md` with the completed 9-to-19-hour
+     snapshot directory size.
    - Commit and push to `https://github.com/oklo/mars-earth-collision`.
 
 ## Existing Render Products
