@@ -1,0 +1,22 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Local Python environments and SWIFT builds
+.venv/
+.conda-swift/
+swift/
+swift-impact/
+woma/
+seagen/
+
+# Very large generated simulation time series.
+snapshots*/
+restart/
+frames_*/
+preview_*_snapshots/
+
+# Temporary render products
+*.tmp
+*.log

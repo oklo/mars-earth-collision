@@ -1,0 +1,7 @@
+snapshot=snapshots_relax_earth_n20000/earth_relax_n20000_0004.hdf5
+time_s=20000
+particles=21805 mass_kg=5.95833581e+24
+com_offset_m=1.01232603e+02 com_speed_m_s=1.54984882e-03
+radius_m q500=4.63970889e+06 q900=6.29667047e+06 q990=6.30464263e+06 q995=6.30594445e+06 q1000=6.31356457e+06
+rho_kg_m3 min=3.21355908e+03 median=4.53324951e+03 max=1.26059258e+04
+v_r_rms_m_s=2.13089795e+01 v_t_rms_m_s=6.22707426e+00 v_r_p95_abs_m_s=3.06977630e+01

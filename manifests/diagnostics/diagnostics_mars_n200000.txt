@@ -1,0 +1,7 @@
+snapshot=snapshots_relax_mars_n200000/mars_relax_n200000_0004.hdf5
+time_s=20000
+particles=20788 mass_kg=6.39535863e+23
+com_offset_m=5.69586375e+01 com_speed_m_s=2.91948207e-03
+radius_m q500=2.52653158e+06 q900=3.27071798e+06 q990=3.27450923e+06 q995=3.27526713e+06 q1000=3.30028548e+06
+rho_kg_m3 min=3.06466528e+03 median=3.35602539e+03 max=8.52705566e+03
+v_r_rms_m_s=1.56074665e+01 v_t_rms_m_s=3.29032045e+00 v_r_p95_abs_m_s=2.04106848e+01
