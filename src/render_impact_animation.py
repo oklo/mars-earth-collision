@@ -105,7 +105,12 @@ def snapshot_paths(snapshot_dir: Path, basename: str) -> list[Path]:
     return paths
 
 
-def read_snapshot(path: Path):
+def read_snapshot_ids(path: Path) -> np.ndarray:
+    with h5py.File(path, "r") as f:
+        return np.asarray(f["PartType0/ParticleIDs"], dtype=np.uint64)
+
+
+def read_snapshot(path: Path, keep_ids: np.ndarray | None = None):
     with h5py.File(path, "r") as f:
         g = f["PartType0"]
         coords = np.asarray(g["Coordinates"], dtype=np.float32)
@@ -115,7 +120,17 @@ def read_snapshot(path: Path):
         if len(box) == 1:
             box = np.repeat(box[0], 3).astype(np.float32)
         time = attr_scalar(f["Header"].attrs["Time"])
-    return time, coords - 0.5 * box, ids, masses
+    coords = coords - 0.5 * box
+    if keep_ids is not None:
+        order = np.argsort(ids)
+        positions = np.searchsorted(ids[order], keep_ids)
+        if np.any(positions >= len(ids)) or not np.array_equal(ids[order][positions], keep_ids):
+            raise SystemExit(f"Snapshot {path} does not contain all selected persistent ParticleIDs")
+        reorder = order[positions]
+        ids = ids[reorder]
+        coords = coords[reorder]
+        masses = masses[reorder]
+    return time, coords, ids, masses
 
 
 def load_labels(path: Path):
@@ -457,24 +472,26 @@ def main() -> None:
     id_to_label_idx, label_body_id, label_classes, label_colors, label_lon, label_lat = load_labels(args.labels)
     basis = view_basis(parse_vector(args.view_vector))
 
+    common_ids = read_snapshot_ids(paths[0])
+    initial_count = len(common_ids)
+    for path in paths[1:]:
+        ids = read_snapshot_ids(path)
+        common_ids = common_ids[np.isin(common_ids, ids, assume_unique=False)]
+    if len(common_ids) == 0:
+        raise SystemExit("No persistent ParticleIDs found across selected snapshots")
+    if len(common_ids) < initial_count:
+        print(
+            f"Using {len(common_ids)} persistent ParticleIDs across {len(paths)} snapshots "
+            f"({initial_count - len(common_ids)} particles dropped)."
+        )
+
     times = []
     positions = []
     masses_ref = None
-    ids_ref = None
+    ids_ref = common_ids
     for path in paths:
-        t, xyz, ids, masses = read_snapshot(path)
-        if ids_ref is None:
-            ids_ref = ids
-            masses_ref = masses
-        elif not np.array_equal(ids_ref, ids):
-            current_lookup = {int(pid): i for i, pid in enumerate(ids)}
-            try:
-                reorder = np.array([current_lookup[int(pid)] for pid in ids_ref], dtype=np.int64)
-            except KeyError as exc:
-                raise SystemExit(f"Particle ID set changed in {path}: missing {exc}") from exc
-            xyz = xyz[reorder]
-            masses = masses[reorder]
-        if not np.array_equal(masses_ref, masses):
+        t, xyz, ids, masses = read_snapshot(path, ids_ref)
+        if masses_ref is None or not np.array_equal(masses_ref, masses):
             masses_ref = masses
         times.append(t)
         positions.append(xyz.astype(np.float32))

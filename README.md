@@ -8,6 +8,10 @@ advected tracer colors on Earth's surface and the Mars impactor.
 
 The latest direct inertial-frame animation is:
 
+[outputs/movies/mars_earth_grazing_settled_n200000_36h_direct_view_75s.mp4](outputs/movies/mars_earth_grazing_settled_n200000_36h_direct_view_75s.mp4)
+
+The earlier 9-hour direct-view movie remains available at:
+
 [outputs/movies/mars_earth_grazing_settled_n200000_9h_direct_view_45s.mp4](outputs/movies/mars_earth_grazing_settled_n200000_9h_direct_view_45s.mp4)
 
 An ApJ-style draft manuscript is available as both source and PDF:
@@ -17,7 +21,7 @@ An ApJ-style draft manuscript is available as both source and PDF:
 
 ## Direct-View Sequence
 
-Frames below are extracted from the final 45-second inertial-frame animation.
+Frames below are extracted from the earlier 45-second inertial-frame animation; the newest movie extends the same direct-view style to 36 simulated hours.
 
 | Initial | Approach |
 |---|---|

@@ -32,10 +32,9 @@ artifacts have been separately restored into the GitHub-ready project.
 ## Current Headline Result
 
 The headline run is the 200k-particle settled Mars-Earth grazing collision.
-The simulation has completed through 19 simulated hours, and a 19h-to-36h
-continuation is currently running.  The best polished render products are still
-the 9-hour direct-view and storyboard movies; update them after the 36-hour run
-finishes.
+The simulation has completed through 36 simulated hours.  The latest polished
+direct-view product is the 75-second 36-hour inertial-frame movie; the 9-hour
+storyboard movie remains the most choreographed presentation cut.
 
 Important local artifacts in the original SWIFT working tree:
 
@@ -44,12 +43,14 @@ snapshots_settled_n200000_6h/
 snapshots_settled_n200000_9h_continuation/
 snapshots_settled_n200000_9h_to_19h/
 snapshots_settled_n200000_9h_combined/
+snapshots_settled_n200000_36h_combined/
 mars_earth_grazing_settled_n200000_6h_to_9h_ic.hdf5
 mars_earth_grazing_settled_n200000_9h_to_19h_ic.hdf5
 mars_earth_grazing_settled_n200000_19h_to_36h_ic.hdf5
 mars_earth_grazing_settled_n200000_labels_coast_eroded.hdf5
 mars_earth_grazing_settled_n200000_9h_direct_view_45s.mp4
 mars_earth_grazing_settled_n200000_9h_storyboard_60s.mp4
+mars_earth_grazing_settled_n200000_36h_direct_view_75s.mp4
 ```
 
 The GitHub project contains curated code, configs, compact HDF5 products,
@@ -125,16 +126,13 @@ a two-body screen and lies inside the instantaneous Hill sphere, but its
 pericenter is close enough to the disrupted remnant/Roche-scale region that it
 may disrupt or re-accrete.  The Earth-Mars remnant pair also appears to remain
 bound in a crude two-body estimate, so later evolution may include another close
-encounter.  Treat this as a hypothesis pending the 36h continuation, clump
+encounter.  Treat this as a hypothesis pending final 36h clump analysis,
 binding checks, conservation diagnostics, and resolution sensitivity.
 
-## Live 19-to-36h Continuation
+## Completed 19-to-36h Continuation
 
-As of 2026-08-08 15:33 PDT, the headline 200k-particle run has been extended
-from 19 simulated hours to 36 simulated hours.  It is running in the original
-SWIFT working tree under a per-user macOS `launchd` job wrapped by
-`caffeinate`, so ordinary terminal closure, display sleep, or screensaver state
-should not stop the calculation.
+The 19h-to-36h continuation completed normally.  It was launched on
+2026-08-08 under a per-user macOS `launchd` job wrapped by `caffeinate`.
 
 Original SWIFT working-tree artifacts:
 
@@ -142,92 +140,77 @@ Original SWIFT working-tree artifacts:
 /Users/greglaughlin/Projects/earth-mars-swift/trial_mars_earth_grazing/mars_earth_grazing_settled_n200000_19h_to_36h.yml
 /Users/greglaughlin/Projects/earth-mars-swift/trial_mars_earth_grazing/mars_earth_grazing_settled_n200000_19h_to_36h_ic.hdf5
 /Users/greglaughlin/Projects/earth-mars-swift/trial_mars_earth_grazing/snapshots_settled_n200000_19h_to_36h/
+/Users/greglaughlin/Projects/earth-mars-swift/trial_mars_earth_grazing/snapshots_settled_n200000_36h_combined/
 /Users/greglaughlin/Projects/earth-mars-swift/trial_mars_earth_grazing/logs/impact_36h_continuation_n200000.log
-/Users/greglaughlin/Projects/earth-mars-swift/trial_mars_earth_grazing/logs/com.greglaughlin.mars-earth.36h.plist
 ```
 
-The compact continuation config and IC have also been copied into the GitHub
+Completion details:
+
+```text
+time_begin: 68400 s
+time_end: 129600 s
+snapshot count: 1021
+final snapshot: mars_earth_grazing_settled_n200000_19h_to_36h_1020.hdf5
+final particle count: 218257 gas/SPH particles
+snapshot directory size: about 20 GB
+SWIFT final log line: main: done. Bye.
+```
+
+The generated 36-hour combined snapshot view contains 2161 symlinks:
+
+```text
+snapshots_settled_n200000_36h_combined/mars_earth_grazing_settled_n200000_36h_combined_0000.hdf5
+...
+snapshots_settled_n200000_36h_combined/mars_earth_grazing_settled_n200000_36h_combined_2160.hdf5
+```
+
+The direct-view 36-hour movie has been rendered and copied into the GitHub
 project:
 
 ```text
-configs/mars_earth_grazing_settled_n200000_19h_to_36h.yml
-data/mars_earth_grazing_settled_n200000_19h_to_36h_ic.hdf5
+outputs/movies/mars_earth_grazing_settled_n200000_36h_direct_view_75s.mp4
+outputs/qc/qc_n200000_36h_direct_view/frame_01.png
+outputs/qc/qc_n200000_36h_direct_view/frame_02.png
+outputs/qc/qc_n200000_36h_direct_view/frame_03.png
+outputs/qc/qc_n200000_36h_direct_view/frame_04.png
+outputs/qc/qc_n200000_36h_direct_view/frame_05.png
 ```
 
-Run details:
+Render details:
 
 ```text
-launchd label: com.greglaughlin.mars-earth.36h
-verified SWIFT PID at launch: 48648
-time_begin: 68400 s
-time_end: 129600 s
-snapshot cadence: 60 s
-expected final snapshot index: 1020
-particles: 218268 gas/SPH particles
-threads: 12
+resolution: 1920 x 1080
+fps: 24
+duration: 75 s
+frames: 1800
+view: fixed inertial, z-axis view, final bodies horizontal
+particle IDs used: 218257 persistent IDs across 2161 snapshots; 14 dropped particles omitted
 ```
 
-The continuation IC was copied from:
-
-```text
-snapshots_settled_n200000_9h_to_19h/mars_earth_grazing_settled_n200000_9h_to_19h_0600.hdf5
-```
-
-It preserves particle ordering and `ParticleIDs`, with the compatibility aliases
-`Density`, `InternalEnergy`, and `SmoothingLength` added to match previous
-continuation ICs.
-
-Monitor the live run with:
-
-```bash
-cd /Users/greglaughlin/Projects/earth-mars-swift/trial_mars_earth_grazing
-launchctl print gui/$(id -u)/com.greglaughlin.mars-earth.36h | grep -E 'state =|pid =|runs =|last exit code'
-tail -f logs/impact_36h_continuation_n200000.log
-find snapshots_settled_n200000_19h_to_36h -maxdepth 1 -name '*.hdf5' | wc -l
-```
-
-To stop the launchd job intentionally:
-
-```bash
-launchctl bootout gui/$(id -u) logs/com.greglaughlin.mars-earth.36h.plist
-```
-
-Do not stop it unless there is a clear reason: a SWIFT failure, runaway disk
-use, thermal problem, or an explicit user request.
+`src/render_impact_animation.py` now explicitly intersects persistent
+`ParticleIDs` across the selected snapshots before loading positions.  This is
+required for the 36-hour sequence because SWIFT drops a very small number of
+particles between the initial and final snapshots.
 
 ## Immediate Next Task
 
-First priority: when the live 19-to-36-hour continuation completes, analyze the
-late-time Mars-rich remnant and the 19h candidate secondary clump.  The main
-scientific question is whether the secondary survives as a distinct bound body,
+First priority: analyze the final 36-hour snapshot and track the 19h
+candidate secondary clump.  The main scientific question is whether the secondary survives as a distinct bound body,
 disrupts, re-accretes onto the Mars-rich remnant, is stripped by Earth, or is
 altered by a subsequent Earth-Mars close encounter.
 
 Recommended sequence:
 
-1. Confirm the run completed normally.  The expected final snapshot is:
+1. Start from the completed final snapshot:
 
    ```text
    snapshots_settled_n200000_19h_to_36h/mars_earth_grazing_settled_n200000_19h_to_36h_1020.hdf5
    ```
 
-   Check the SWIFT log for normal termination and conservation diagnostics.
+   The run completed normally; still check conservation diagnostics before
+   making scientific claims.
 
-2. Build a combined 36-hour snapshot view by symlinking the existing 0-to-6-hour,
-   6-to-9-hour, 9-to-19-hour, and 19-to-36-hour snapshots into a new continuous
-   directory:
-
-   ```text
-   snapshots_settled_n200000_36h_combined/
-   ```
-
-   Use a continuous basename such as:
-
-   ```text
-   mars_earth_grazing_settled_n200000_36h_combined_0000.hdf5
-   ```
-
-3. Analyze the Mars remnant and possible satellite:
+2. Analyze the Mars remnant and possible satellite:
 
    - Identify Mars-origin particles using `BodyID == 2` from the label file.
    - Track the 19h candidate secondary across the 19-to-36-hour snapshots using
@@ -242,8 +225,8 @@ Recommended sequence:
      the fact that this is one high-impact visualization run rather than a
      convergence-tested parameter survey.
 
-4. Render at least one updated direct inertial-frame movie and one diagnostic
-   final-state still.  Reuse:
+3. Render any additional diagnostic final-state stills or alternative camera
+   cuts.  Reuse:
 
    ```text
    src/render_impact_animation.py
@@ -259,7 +242,7 @@ Recommended sequence:
      --snapshot-dir snapshots_settled_n200000_36h_combined \
      --basename mars_earth_grazing_settled_n200000_36h_combined \
      --labels mars_earth_grazing_settled_n200000_labels_coast_eroded.hdf5 \
-     --out mars_earth_grazing_settled_n200000_36h_direct_view.mp4 \
+     --out mars_earth_grazing_settled_n200000_36h_direct_view_75s.mp4 \
      --duration 75 --fps 24 --width 1920 --height 1080 \
      --view-vector 0,0,1 \
      --align-final-bodies-horizontal \
@@ -272,13 +255,11 @@ Recommended sequence:
      --clock-fontsize 9.5
    ```
 
-5. Update the GitHub-ready project after the extension:
+4. Update the GitHub-ready project after further analysis/rendering:
 
    - Copy new scripts/configs/compact products/rendered movies/QC frames into
      `/Users/greglaughlin/Projects/mars-earth-collision`.
    - Do not commit multi-GB snapshot directories to Git.
-   - Update `manifests/LARGE_ARTIFACTS.md` with the completed 19-to-36-hour
-     snapshot directory size.
    - Commit and push to `https://github.com/oklo/mars-earth-collision`.
 
 ## Existing Render Products
@@ -286,6 +267,7 @@ Recommended sequence:
 Most useful current movies:
 
 ```text
+outputs/movies/mars_earth_grazing_settled_n200000_36h_direct_view_75s.mp4
 outputs/movies/mars_earth_grazing_settled_n200000_9h_direct_view_45s.mp4
 outputs/movies/mars_earth_grazing_settled_n200000_9h_storyboard_60s.mp4
 ```
