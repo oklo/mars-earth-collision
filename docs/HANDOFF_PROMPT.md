@@ -32,9 +32,12 @@ artifacts have been separately restored into the GitHub-ready project.
 ## Current Headline Result
 
 The headline run is the 200k-particle settled Mars-Earth grazing collision.
-The simulation has completed through 36 simulated hours.  The latest polished
-direct-view product is the 75-second 36-hour inertial-frame movie; the 9-hour
-storyboard movie remains the most choreographed presentation cut.
+The simulation completed normally through 92 simulated hours on 2026-08-19.
+The latest polished product is the 179-second global-view movie reaching about
+89 hours, with an August 17 10:00 AM MDT civil-time clock.  The wider framing
+keeps the main remnant in view through the second encounter and long debris
+stream.  The 92-hour tail exists in the snapshots but is not included in that
+presentation cut.
 
 Important local artifacts in the original SWIFT working tree:
 
@@ -44,13 +47,19 @@ snapshots_settled_n200000_9h_continuation/
 snapshots_settled_n200000_9h_to_19h/
 snapshots_settled_n200000_9h_combined/
 snapshots_settled_n200000_36h_combined/
+snapshots_settled_n200000_36h_to_72h/
+snapshots_settled_n200000_72h_to_92h/
 mars_earth_grazing_settled_n200000_6h_to_9h_ic.hdf5
 mars_earth_grazing_settled_n200000_9h_to_19h_ic.hdf5
 mars_earth_grazing_settled_n200000_19h_to_36h_ic.hdf5
+mars_earth_grazing_settled_n200000_36h_to_72h_ic.hdf5
+mars_earth_grazing_settled_n200000_72h_to_92h_ic.hdf5
 mars_earth_grazing_settled_n200000_labels_coast_eroded.hdf5
 mars_earth_grazing_settled_n200000_9h_direct_view_45s.mp4
 mars_earth_grazing_settled_n200000_9h_storyboard_60s.mp4
 mars_earth_grazing_settled_n200000_36h_direct_view_75s.mp4
+logs/impact_72h_continuation_n200000.log
+logs/impact_92h_continuation_n200000.log
 ```
 
 The GitHub project contains curated code, configs, compact HDF5 products,
@@ -81,7 +90,9 @@ simulation of a near-grazing Earth-Mars collision.  The model uses:
 
 Do not present the current result as a robust physical boundary between merger,
 hit-and-run, erosion, or satellite-forming regimes.  It is a scientifically
-grounded visualization and a starting point for quantitative analysis.
+grounded visualization and a starting point for quantitative analysis.  The
+visible second passage is hydrodynamic, so the earlier three-point-mass/tidal
+model must not be propagated through it.
 
 ## Completed 9-to-19h Continuation
 
@@ -192,81 +203,60 @@ particle IDs used: 218257 persistent IDs across 2161 snapshots; 14 dropped parti
 required for the 36-hour sequence because SWIFT drops a very small number of
 particles between the initial and final snapshots.
 
+## Completed 36-to-92h Hero Continuation
+
+The 36-to-72-hour stage completed normally with 2,700 snapshots.  Its final
+state is exactly `259200 s` (72.0 h) and contains 218,251 particles.  The
+72-to-92-hour stage also completed normally with 1,080 snapshots.  Its final
+state is:
+
+```text
+snapshots_settled_n200000_72h_to_92h/
+  mars_earth_grazing_settled_n200000_72h_to_92h_1079.hdf5
+time: 331200 s = 92.0 h
+particles: 215299
+sha256: b3a241779f10ac12ef1fdf59a11186d6950cae60cba2d31170d09830d0474a9b
+SWIFT final log line: main: done. Bye.
+```
+
+The larger particle loss during the last stage should be accounted for in any
+mass budget and in the persistent-ID intersection used for rendering.  Do not
+assume particles absent from the final HDF5 file are physically accreted
+without checking SWIFT's removal criteria and the run statistics.
+
 ## Immediate Next Task
 
-First priority: analyze the final 36-hour snapshot and track the 19h
-candidate secondary clump.  The main scientific question is whether the secondary survives as a distinct bound body,
-disrupts, re-accretes onto the Mars-rich remnant, is stripped by Earth, or is
-altered by a subsequent Earth-Mars close encounter.
+The next scientifically useful task is a quantitative 92-hour remnant and
+debris census, not further secular-tide propagation.  The global-view movie
+shows a serious second passage and long stream, but visual clumps alone do not
+establish binding.
 
 Recommended sequence:
 
-1. Start from the completed final snapshot:
+1. Run conservation and particle-loss diagnostics across the 36--72 and
+   72--92-hour stages.
+2. Apply the 36-hour clump finder to the final snapshot and several preceding
+   checkpoints, tracking memberships with persistent `ParticleIDs`.
+3. Compute masses, source/material fractions, COM states, radii, spin/angular
+   momentum, and binding hierarchies for every surviving compact clump.
+4. Classify extended stream material relative to Earth, the Mars-origin
+   remnant, and the system barycenter; report marginally bound material as an
+   interval rather than a hard inventory.
+5. Compare the measured first renewed contacts with the encounter ordering in
+   `docs/forward_tides_note.md`, while making clear that the analytic model was
+   invalid once finite-size hydrodynamics began.
 
-   ```text
-   snapshots_settled_n200000_19h_to_36h/mars_earth_grazing_settled_n200000_19h_to_36h_1020.hdf5
-   ```
-
-   The run completed normally; still check conservation diagnostics before
-   making scientific claims.
-
-2. Analyze the Mars remnant and possible satellite:
-
-   - Identify Mars-origin particles using `BodyID == 2` from the label file.
-   - Track the 19h candidate secondary across the 19-to-36-hour snapshots using
-     `ParticleIDs` and clump membership.
-   - Find bound clumps in the Mars-origin material at late times.
-   - Compute mass, COM, velocity, angular momentum, approximate binding energy,
-     osculating elements, and Hill/Roche-scale comparisons for the main remnant
-     and candidate companion.
-   - Compare binding to Earth as well: distinguish a true Mars companion from a
-     transient fragment, Earth-bound debris, or unbound ejecta.
-   - Produce a short note with caveats about resolution, SPH clump finding, and
-     the fact that this is one high-impact visualization run rather than a
-     convergence-tested parameter survey.
-
-3. Render any additional diagnostic final-state stills or alternative camera
-   cuts.  Reuse:
-
-   ```text
-   src/render_impact_animation.py
-   src/render_storyboard_animation.py
-   src/render_density_trial_frames.py
-   ```
-
-   The current direct-view render style uses:
-
-   ```bash
-   env -u DYLD_LIBRARY_PATH /Users/greglaughlin/Projects/earth-mars-swift/.venv/bin/python \
-     render_impact_animation.py \
-     --snapshot-dir snapshots_settled_n200000_36h_combined \
-     --basename mars_earth_grazing_settled_n200000_36h_combined \
-     --labels mars_earth_grazing_settled_n200000_labels_coast_eroded.hdf5 \
-     --out mars_earth_grazing_settled_n200000_36h_direct_view_75s.mp4 \
-     --duration 75 --fps 24 --width 1920 --height 1080 \
-     --view-vector 0,0,1 \
-     --align-final-bodies-horizontal \
-     --bounds-mode final-bodies \
-     --bounds-quantile 0.995 \
-     --camera-padding 0.06 \
-     --title-color '#b6bdc9' \
-     --clock-color '#9aa3b0' \
-     --title-fontsize 13 \
-     --clock-fontsize 9.5
-   ```
-
-4. Update the GitHub-ready project after further analysis/rendering:
-
-   - Copy new scripts/configs/compact products/rendered movies/QC frames into
-     `/Users/greglaughlin/Projects/mars-earth-collision`.
-   - Do not commit multi-GB snapshot directories to Git.
-   - Commit and push to `https://github.com/oklo/mars-earth-collision`.
+The 92-hour calculation is one 200k-particle realization.  Merger, survival,
+satellite, or escape claims still require resolution and initial-condition
+sensitivity.
 
 ## Existing Render Products
 
 Most useful current movies:
 
 ```text
+outputs/movies/mars_earth_grazing_settled_n200000_89h_global_view_mdt_10am_179s.mp4
+outputs/movies/mars_earth_first4h_standard_wide_mdt_10am_30s.mp4
 outputs/movies/mars_earth_grazing_settled_n200000_36h_direct_view_75s.mp4
 outputs/movies/mars_earth_grazing_settled_n200000_9h_direct_view_45s.mp4
 outputs/movies/mars_earth_grazing_settled_n200000_9h_storyboard_60s.mp4
@@ -304,6 +294,7 @@ paper/mars_earth_collision_apj.pdf
 ## Communication Style
 
 Report results with concrete paths, exact simulated times, particle counts,
-and caveats.  If the 19-hour run suggests Mars reconsolidation or a bound
-companion, describe it as a hypothesis from this run until clump binding,
-resolution sensitivity, and conservation diagnostics have been checked.
+and caveats.  If the 92-hour snapshots suggest reconsolidation, a bound
+companion, or escaping clumps, describe each as a hypothesis from this run
+until binding, resolution sensitivity, and conservation diagnostics have been
+checked.

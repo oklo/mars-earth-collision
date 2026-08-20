@@ -1,0 +1,27 @@
+{
+  "headline": "The finite-radius nominal model reaches secondary--Earth contact before the counterfactual Earth--Mars contact.",
+  "nominal_radius_key": "r99",
+  "nominal_dynamical_efficiency": 0.01,
+  "nominal_first_outcome": "earth_secondary_contact",
+  "nominal_first_contact_hr_after_36h": 28.901087855116895,
+  "nominal_first_contact_absolute_hr": 64.9010878551169,
+  "earth_mars_initial_osculating_q_km": 8442.66207687382,
+  "earth_mars_r99_contact_km": 10354.251521104556,
+  "earth_mars_two_body_r99_contact_hr_after_36h": 30.37478497111672,
+  "earth_mars_three_body_counterfactual_r99_contact_hr_after_36h": 31.23391095755567,
+  "earth_mars_fractional_h_increase_needed_to_clear_r99": 0.10085952301996448,
+  "earth_mars_delta_L_needed_to_clear_r99_kg_m2_s": 4.256539765441881e+33,
+  "mars_secondary_initial_osculating_q_km": 8440.940858503347,
+  "mars_secondary_r99_contact_km": 5004.535241161068,
+  "mars_secondary_r99_roche_km": 9182.290597792524,
+  "nominal_roche_entries": [
+    "earth_secondary",
+    "mars_secondary"
+  ],
+  "nominal_equilibrium_tides_activated": false,
+  "ensemble_min_fraction_earth_secondary_first": 1.0,
+  "ensemble_max_fraction_earth_secondary_first": 1.0,
+  "ensemble_max_fraction_earth_mars_first": 0.0,
+  "ensemble_max_fraction_mars_secondary_first": 0.0,
+  "interpretive_limit": "Any contact or Roche entry invalidates subsequent point-mass evolution; continue with SPH for post-contact outcomes."
+}

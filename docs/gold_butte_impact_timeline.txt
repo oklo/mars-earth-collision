@@ -1,0 +1,753 @@
+GOLD BUTTE: A COLD-EARTH RECASTING OF THE MARS-EARTH GRAZING IMPACT
+====================================================================
+
+The cleanest way to picture the event is as a transition through three regimes:
+
+1. For most of the preceding day, Gold Butte remains recognizable terrain
+   undergoing an extraordinary but slow planetary tide.
+2. During the final two to four hours, “geology” begins to fail: the lithosphere
+   fractures and moves on scales of hundreds of metres to kilometres.
+3. Roughly 20–90 minutes after first contact on the far side, the antipodal shock
+   converts the site from a landscape into a Lagrangian parcel of fragmented,
+   shocked material. From then onward the SPH bulk motion is more meaningful than
+   any reconstruction of the original summit.
+
+I place the collision near 50 degrees S in the southern Indian Ocean so that Gold
+Butte is close to the antipode. This is a geographical rotation of the simulated
+encounter, whose original contact geometry was nearly equatorial. It preserves the
+gross energetics and antipodal timing, but not an exact pre-impact sky track.
+
+The Gold Butte summit has dark, blocky rubble and low rockwork in the foreground,
+grassy shoulders falling toward small ponds, and an unusually open prairie
+horizon. The Sweet Grass Hills rise almost 3,000 feet above the plains and are
+resistant Eocene igneous intrusions surrounded by older sedimentary rock. That
+resistant summit would probably outlast the surrounding slopes during the early
+deformation—but only by minutes or hours.
+
+Landscape references:
+https://sonnybou.ca/ssbou2016/goldbutte.html
+https://www.blm.gov/visit/sweet-grass-hills-1
+
+
+QUANTITATIVE APPROACH
+---------------------
+
+Taking first material contact as t=0, a two-body backward integration from the
+simulation’s initial state gives:
+
+ Time       COM distance    Speed       Geocentric Mars     Peak linear
+                                       diameter             solid-Earth tide*
+ ------------------------------------------------------------------------------
+ -24 h      286,000 km      2.60 km/s    1.31 degrees        5 m
+ -12 h      168,000 km      2.98 km/s    2.23 degrees       23 m
+  -8 h      124,000 km      3.28 km/s    3.02 degrees       58 m
+  -6 h      101,000 km      3.52 km/s    3.73 degrees      110 m
+  -4 h       74,900 km      3.93 km/s    5.01 degrees      265 m
+  -3 h       61,000 km      4.25 km/s    6.15 degrees      490 m
+  -2 h       46,000 km      4.78 km/s    8.17 degrees        1.15 km
+  -1 h       29,300 km      5.81 km/s   12.84 degrees        4.4 km—nonlinear
+ -30 min     20,100 km      6.90 km/s   18.8 degrees         linear theory fails
+ Contact     ~10,900 km     ~9.2 km/s   ~35 degrees          hydrodynamic regime
+
+* Maximum equilibrium radial displacement at the sub-Mars and anti-Mars points,
+  using a present-Earth radial Love number h2 approximately equal to 0.6. It is an
+  equilibrium scale, not a prediction that Earth can actually follow it during
+  the final hour.
+
+The gravitational tide is already about 20 lunar tides at -24 hours, about 100
+lunar tides at -12 hours, and thousands of lunar tides in the final few hours.
+This does not initially mean twenty or one hundred times normal earthquake
+shaking: it is a very broad, slowly varying deformation. An observer is carried
+upward or downward with the whole region and does not directly feel most of the
+displacement.
+
+
+THE GOLD BUTTE TIMELINE
+-----------------------
+
+t = -24 to -12 hours: an ominously intact world
+
+Gold Butte still looks like Gold Butte. Wind crosses the grass; the ponds and
+distant prairie remain visible; the sky is not yet on fire.
+
+Mars would probably remain below the southern horizon in the intended antipodal
+mapping. At contact it is almost directly beneath the observer, and a celestial
+direction near 50 degrees south never rises for an observer near 49 degrees north.
+Around twelve hours before impact it might pass within several degrees of the
+southern horizon, but its roughly two-degree disk would still be hidden. Thus
+there need be no enormous red planet visibly descending through the sky over
+Montana.
+
+The first unmistakable effects are geodetic:
+
+- At -24 hours the solid Earth’s equilibrium tidal displacement is of order metres.
+- By -12 hours it is tens of metres at the tidal extrema.
+- Earth’s rotation carries Gold Butte through different parts of the tidal figure.
+  In one illustrative orientation, the summit goes from the outward far-side bulge
+  at -24 hours through a shallow inward phase near -12 hours, before approaching
+  the rapidly growing antipodal bulge during the final several hours.
+
+Because the deformation has a planetary wavelength, Gold Butte and the surrounding
+prairie initially move almost together. A person does not feel a five-metre rise
+spread over hours. Survey instruments, gravimeters, well levels and long-baseline
+GPS would register impossible changes. Lakes and reservoirs begin unusual
+seiching. Ocean basins elsewhere experience tides many metres high and badly out
+of phase with the forcing.
+
+Faults already near failure would be triggered. There would be scattered
+earthquakes, landslides and changes in springs, but the North American craton would
+not yet be liquefied or incandescent. Tidal deformation itself does not heat the
+summit to thousands of kelvin.
+
+
+t = -12 to -6 hours: planetary tide becomes a geological event
+
+The maximum equilibrium solid tide grows from about 20 to 100 metres. Its changing
+direction bends the lithosphere on a timescale of hours.
+
+On Gold Butte, the strongest igneous blocks remain intact longer than the
+sedimentary foothills, but talus slopes begin moving. Existing joints open and
+close. Repeated regional earthquakes knock down structures and raise dust over the
+plains. Ponds spill and oscillate. The horizon subtly changes elevation as the
+whole region tilts by tens of microradians.
+
+The atmosphere is disturbed primarily from below: moving terrain, large-scale
+pressure tides, ocean-atmosphere coupling, dust and volcanic or fault-related gas
+release. At the precise antipodal axis the horizontal tidal force is relatively
+small, so the local wind need not yet be the worst on Earth. The scene could retain
+an unsettling normality between earthquakes.
+
+
+t = -6 to -4 hours: the last recognizably terrestrial interval
+
+The global equilibrium displacement scale passes 100 metres and reaches roughly
+250 metres. The actual response lags because the forcing is accelerating, but it
+is now comparable to Earth’s elastic normal-mode timescale. The gravest spheroidal
+mode of ordinary Earth has a period of about 54 minutes; the approaching Mars is
+beginning to force the planet on similarly short timescales.
+
+Normal-mode reference:
+https://doi.org/10.1002/2017RG000566
+
+This is no longer a sequence of ordinary earthquakes. Large regions are being
+loaded coherently. Fault-system ruptures are secondary details riding on a global
+degree-two deformation.
+
+From the summit, the visible effects would be:
+
+- Continuous rockfalls rather than isolated ones.
+- Broad prairie surfaces rolling and tilting.
+- Dust curtains along the foothills and distant fault scarps.
+- Water behaving as if the basin itself were being tipped.
+- A persistent low roar from moving rock, wind and seismic activity.
+
+The Sun or stars may still be visible. There is still no direct impact flash
+because the future contact region is on the other side of the planet.
+
+
+t = -4 to -2 hours: Gold Butte begins to lose its independence
+
+In the illustrative antipodal geometry, Gold Butte is now entering the rapidly
+growing outward far-side bulge. An instantaneous elastic model suggests a local
+displacement rising through roughly a hundred metres toward a kilometre. The real
+response will be smaller and phase-lagged, but vertical velocities of centimetres
+to perhaps tenths of a metre per second become plausible even before seismic
+shaking is included.
+
+The distinction between the igneous butte and its sedimentary surroundings still
+matters locally—the butte can fragment into larger, stronger blocks—but it no
+longer controls the motion. The entire lithospheric column is being bent.
+
+Human survival is essentially over through ordinary mechanisms: violent
+earthquakes, slope collapse, exposed utilities and pipelines, dust, fires and
+atmospheric disruption. Nevertheless, the rock itself can still be cold and solid
+in many places. This is an important correction to the original hot SPH initial
+condition.
+
+
+t = -2 hours to -30 minutes: geology gives way to continuum mechanics
+
+The formal equilibrium tide rises from about one kilometre to an absurd value
+larger than the lithosphere can support. That is not a prediction of a
+14-kilometre-high Gold Butte. It signals that linear tide theory has failed.
+
+The lithosphere ruptures on continental scales. The mantle beneath responds as a
+rapidly deforming viscoelastic or fluid body. Gold Butte may persist briefly as a
+raft or collection of fractured blocks, but it is no longer stationary relative
+to a stable crust.
+
+Even now the direct differential gravitational acceleration is not “weightlessness”:
+at -1 hour it is only a few thousandths of g. The destructive effect is the
+accumulated strain, changing curvature and dynamically excited planetary motion,
+not Mars simply lifting people off the ground.
+
+The ground’s slow rise begins accelerating and reversing as the tidal bulge can no
+longer keep pace with Mars. The atmosphere is dragged by terrain moving beneath
+it. Winds and pressure fluctuations become extreme, but there is still no
+instantaneous thermal pulse from the collision site.
+
+
+t = 0: first contact, unseen
+
+Mars begins grazing Earth in the southern Indian Ocean at roughly 9–10 km/s.
+
+At Gold Butte there is no simultaneous flash, sound or seismic jolt. Light cannot
+pass through Earth, and mechanical information has not arrived. The observer
+continues experiencing the already enormous tidal deformation.
+
+The collision’s relative kinetic-energy scale is approximately
+
+    E_collision ~ 2.7 x 10^31 J,
+
+roughly one-eighth of Earth’s gravitational binding energy. How much becomes
+shock heat, global oscillation, ejecta or Mars-remnant orbital energy is the
+central hydrodynamic question.
+
+
+t = +15 to +30 minutes: the first signal through the planet
+
+The fastest compressional phases traverse Earth’s core in approximately twenty
+minutes. Ordinary terrestrial P waves range from roughly 6 km/s in crust to about
+13 km/s in the core; a PREM travel-time calculation gives the same order.
+
+Seismic reference:
+https://www.usgs.gov/programs/earthquake-hazards/seismographs-keeping-track-earthquakes
+
+This first arrival would not resemble the onset of a conventional earthquake. It
+is the leading edge of a finite, planetary-scale source. The ground abruptly
+changes from slow tidal motion to violent compression and rebound.
+
+Antipodal focusing tends to concentrate seismic energy, although real lateral
+structure smears the ideal focus. Even for Chicxulub-scale sources, numerical
+calculations find substantial focusing; applying their exact amplification factors
+to a Mars-sized collision would be unjustified because the response here is
+nonlinear.
+
+Antipodal-focusing reference:
+https://academic.oup.com/gji/article/187/1/529/564818
+
+The summit’s jointed rock shatters. Blocks are thrown, compressed and rotated.
+“Standing on Gold Butte” ceases to have a physical meaning, although we can
+continue following the original material.
+
+
+t = +30 to +75 minutes: the landscape is erased
+
+This is where the SPH calculation becomes most useful for bulk motion.
+
+Relative to first contact, the simulation finds:
+
+- About +35 minutes: global surface radial RMS motion peaks near 440 m/s.
+- About +40 minutes: the antipodal surrogate first enters a strong,
+  multi-gigapascal pressure excursion.
+- About +70 minutes: global three-dimensional residual surface speed peaks near
+  890 m/s.
+- About +70 minutes: the antipodal parcel reaches pressure changes of order
+  10 GPa in the coarse model.
+
+These are not earthquake ground velocities. A normal seismic instrument and
+moment-magnitude description are no longer meaningful. Material moving vertically
+at 400–900 m/s has a ballistic height scale of tens of kilometres if temporarily
+unsupported.
+
+The cold cratonic rock does not necessarily melt at the first shock front. A
+10–30 GPa pulse will pulverize it and heat it strongly, but complete melting of
+coherent granitoid depends on shock path, porosity and repeated compression. The
+robust conclusion is fragmentation and loss of stratigraphic context, not an
+exact local temperature.
+
+Surface waves travelling at a few kilometres per second require roughly one to
+two hours to converge from the impact side around the circumference. Here they
+overlap with global normal modes and hydrodynamic deformation.
+
+Surface-wave reference:
+https://earthquake.usgs.gov/earthquakes/events/1906calif/18april/earthwaves.php
+
+
+t = +1 to +3 hours: the observer becomes an astrophysical tracer
+
+The original Gold Butte material is now part of a fragmented, accelerating mixture.
+In the SPH surrogate it:
+
+- Moves at roughly 1–1.6 km/s relative to smooth rotation.
+- Experiences a peak pressure of order several tens of GPa around +1.5 to +2 hours.
+- Is transported hundreds of kilometres radially relative to its pre-impact
+  position and temporarily overtaken by other outer material.
+
+That radial excursion should not be interpreted literally as “Gold Butte drops
+600 kilometres through an intact mantle.” It means that the parcel has been
+engulfed by the rearranging outer planet; its percentile within the remnant changes
+dramatically.
+
+The sky now catches up with the ground. Fast ejecta and impact-generated vapor can
+travel globally on suborbital timescales of approximately one hour. Re-entering
+rock, expanding steam and silicate vapor turn the atmosphere luminous and
+increasingly opaque. There may therefore be a striking interval in which the
+antipodal seismic catastrophe arrives before the main visible skyfire.
+
+Only a few ten-thousandths of the collision energy is comparable to the few x
+10^27 J required to heat and vaporize the modern ocean. An intact ocean at this
+stage is implausible, although this simulation cannot determine exactly how quickly
+each basin vaporizes. Very-large-impact calculations independently produce global
+ejecta blankets and rock-vapor atmospheres, even for impactors smaller than Mars.
+
+Very-large-impact reference:
+https://www.sciencedirect.com/science/article/abs/pii/S0032063305001194
+
+
+t = +3 to +8 hours: a ringing planetary remnant
+
+Mars has passed and is receding, so the externally imposed tide weakens. Earth’s
+own oscillation now dominates.
+
+At roughly four hours after contact, outer-material residual speeds in the SPH run
+remain around 500 m/s. At approximately seven hours they are still around 250 m/s.
+The planet is alternately oblate, elongated and irregular, with shocks and pressure
+waves repeatedly traversing it. The familiar 54-minute normal mode is only a guide:
+melting, rotation, mass exchange and large deformation shift the actual spectrum.
+
+The original summit material may move outward again and return near the remnant’s
+nominal surface, but it is no longer a coherent hill. It may be dispersed among
+melt, fragmented crust and fallback ejecta.
+
+The atmosphere is a mixture of surviving air, steam, impact gases and silicate
+vapor. Some is escaping; much remains gravitationally bound. Day and night are
+largely replaced by an incandescent, opaque canopy.
+
+
+t = +8 to +24 hours: damping, fallback and loss of geography
+
+The Earth remnant remains bound and massive, but “surface” denotes a time-dependent
+photosphere or outer material envelope, not land and sea.
+
+By about +17 hours the tracked antipodal parcel’s residual motion has declined to
+roughly 90 m/s in the model. At +24 hours, tens to perhaps 100 m/s is a defensible
+scale, depending on which outer material is sampled. This is strong damping
+relative to the first few hours but still astrophysically violent.
+
+Mars survives the first passage as a major remnant and is receding toward a distant
+orbital turning point. A Mars-derived secondary is forming nearby. Their future
+close encounters matter, but they do not restore a geological surface during this
+first day.
+
+Giant-impact calculations commonly find that a standard Mars-sized impact leaves
+most of Earth’s mantle molten, although the degree of mixing can remain incomplete.
+That is the appropriate +24-hour picture here: a hot, strongly oscillating Earth
+remnant with a vapor-rich envelope and widespread fallback, not a damaged but
+recognizable North America.
+
+Mantle-melting reference:
+https://authors.library.caltech.edu/records/agttc-91h97
+
+
+THE MONTHS-LONG OPTICAL APPROACH OF MARS
+----------------------------------------
+
+The eeriest feature of the approach is not initially rapid motion. It is that
+Mars remains nearly fixed among the stars while steadily swelling.
+
+The SPH calculation itself begins only two hours before contact and contains no
+Sun. It therefore does not specify a unique heliocentric orbit months before the
+collision. The reconstruction below is a kinematic backward extension of the
+simulation's incoming Earth-Mars state, whose hyperbolic excess speed is about
+1.91 km/s, embedded in the same August 17 sky geometry used elsewhere in this
+note. The distances and angular sizes are useful consequences of that extension.
+The month-scale constellation, elongation and phase are one physically plausible
+solar-system realization, not a unique result of the SPH initial conditions.
+Beyond Earth's Hill sphere a proper reconstruction would require a solar-system
+N-body trajectory.
+
+The assumed incoming asymptote places Mars close to the celestial equator in or
+near Virgo. Its changing illumination is estimated with a cold, present-like Mars
+and a simple Lambertian scattering law. The listed magnitudes are consequently
+order-of-magnitude visual estimates rather than predictions of weather, dust or
+surface photometry.
+
+ Approximate date      Time       Distance       Diameter   Illuminated   Magnitude
+ -------------------------------------------------------------------------------
+ Feb 18              -6 months    30.4 million km   0.77'       95%          -4.5
+ Mar 20              -5 months    25.4 million km   0.92'      ~100%         -5.0
+ Apr 19              -4 months    20.4 million km   1.14'       95%          -5.5
+ May 19              -3 months    15.4 million km   1.51'       80%          -5.9
+ Jun 18              -2 months    10.4 million km   2.24'       57%          -6.3
+ Jul 18              -1 month      5.37 million km  4.34'       31%          -6.7
+ Aug 3               -2 weeks      2.65 million km  8.80'       18%          -7.4
+ Aug 10              -1 week       1.42 million km 16.37'       14%          -8.3
+ Aug 14              -3 days       0.690 million km 33.8'       11%          -9.5
+ Aug 15              -2 days       0.494 million km 47.2'       11%         -10.2
+
+For comparison, the Moon is about 30 arcminutes wide, Venus reaches roughly
+magnitude -4.7, and the full Moon is magnitude -12.7.
+
+Six to five months before impact: an impossible opposition
+
+In February, Mars is an extraordinary orange "star." It rises during the evening
+and remains visible through most of the night. To most unaided eyes it is still
+point-like, although unusually steady and intensely coloured. In binoculars or
+any telescope it is already unmistakably a globe: about Jupiter's apparent
+diameter and nearly twice the largest Mars normally appears from Earth.
+
+Near March 20 it reaches opposition. It rises near sunset, culminates due south
+around midnight at approximately 41 degrees altitude as seen from Gold Butte, and
+sets near sunrise. It is nearly fully illuminated and somewhat brighter than
+Venus ever becomes. In a dark prairie sky it can cast a subtle shadow.
+
+This opposition is profoundly abnormal to astronomers. Instead of executing an
+ordinary Martian retrograde loop, it moves only a few arcseconds per day while its
+range collapses rapidly. Radar, parallax and spectroscopy establish the collision
+course long before the public can resolve its disk. By this point there is no
+scientifically credible interpretation in which this is merely an unusually
+favourable apparition of normal Mars.
+
+Four to three months before impact: a world rather than a star
+
+During April and May the Sun begins catching up with Mars from the west. Mars
+becomes an evening object, still culminating in the southern sky but setting
+progressively earlier. Its phase diminishes from almost full to gibbous.
+
+By April its diameter exceeds one arcminute. Exceptionally sharp unaided eyes may
+notice that it is not a point. By May, at about 1.5 arcminutes, it looks like a
+minute ochre bead and scarcely scintillates. The polar cap, Syrtis Major and other
+large albedo markings are far easier to see telescopically than in any historical
+apparition.
+
+Mars's 24 hour 37 minute rotation has a peculiar visual consequence. At roughly
+the same local hour on successive nights almost the same hemisphere returns,
+displaced by only a few degrees, but the entire globe is perceptibly larger over
+longer intervals. The resemblance from night to night emphasizes the growth.
+
+Two months before impact: a tiny half-Moon
+
+By mid-June Mars is approximately half illuminated and 2.2 arcminutes wide. It
+culminates near the end of the afternoon or around sunset and sets near midnight.
+To the unaided eye it is now a resolved, asymmetric world: a tiny orange half-Moon
+about one-thirteenth the Moon's diameter. Its integrated light is several times
+brighter than Venus, although that light is spread over a visible surface.
+
+Its location still changes remarkably little. At two months the trajectory
+produces only about 15 arcseconds of geocentric motion per day, much less than the
+Moon's roughly 13 degrees per day. The Sun's seasonal progress changes when Mars
+rises and sets more conspicuously than Mars changes position among the stars.
+
+One month before impact: the daylight crescent
+
+During July Mars changes from a half-lit world into a broad crescent. At the
+one-month mark it is 4.3 arcminutes across, about one-seventh the Moon's width. It
+is easy to find in daylight once its position is known. After sunset it hangs in
+the south or southwest as a copper-coloured miniature planet, with a brilliant
+sunward limb and a darker reddish remainder.
+
+Earthshine increasingly illuminates the Martian night hemisphere. This does not
+make the dark portion as bright as the sunlit crescent, but it can complete the
+impression of a ghostly round globe, especially through optical aid. Mars's motion
+against the stars is still only about one arcminute per day. It returns night
+after night almost in the same place while continuing to enlarge.
+
+The final two weeks: naked-eye planetary geography
+
+On August 3 Mars is about 8.8 arcminutes wide, nearly one-third the Moon's
+diameter. The crescent shape and its two horns are obvious without optical aid.
+Broad differences in surface tone may be suspected across the dim globe, although
+glare, atmospheric seeing and any Martian dust make exact naked-eye detail
+uncertain.
+
+On August 10 it is more than half the Moon's diameter and shines near magnitude
+-8.3. Its geocentric motion has risen to about 0.2 degree per day, finally obvious
+from one evening to the next. Earth is now inside the region where its tide on
+Mars exceeds the solar tide. That does not instantly disrupt Mars, but increasing
+quakes, slope failure and dust during the last days are plausible. The present SPH
+initial conditions do not model this months-long tidal preparation of Mars.
+
+On August 14 Mars equals or slightly exceeds the Moon's diameter, although only
+about one-tenth of its face is directly illuminated. The dim earthlit hemisphere
+completes the globe. The formerly almost stationary planet now moves nearly a
+degree per day relative to the stars.
+
+The final visible passage
+
+At local noon on August 15, t=-48 hours, Mars is already 0.765 degree wide, about
+1.5 lunar diameters. It is a resolved daylight crescent in the southeast at an
+altitude of about 32 degrees. It culminates that afternoon near 41 degrees
+altitude and sets in the west shortly after local-solar 20:20.
+
+It returns on August 16 substantially enlarged. At its final culmination it is
+about 1.47 degrees wide. At the final western setting, ending near local-solar
+20:34, its disk is about 1.87 degrees wide: 3.6 lunar diameters. The setting lasts
+nearly twelve minutes from the lower limb touching the horizon until the upper
+limb disappears.
+
+Earth's gravitational deflection is now visible directly. The formerly stationary
+world moves roughly 0.4 degree per hour, comparable to the Moon's ordinary motion.
+Its phase fraction also bottoms out and begins increasing slightly as the path
+curves, turning the final thin crescent into a slowly re-waxing one.
+
+Mars then remains below Gold Butte's horizon for the last 15.5 hours. Its visible
+disk is gone while the tides, earthquakes and deformation of Earth continue to
+accelerate. Maximum impact occurs around local noon on August 17 with Mars hidden
+beneath the northern horizon.
+
+
+DETAILED PRE-IMPACT EXPANSION: t = -48 HOURS TO -1 HOUR
+-------------------------------------------------------
+
+Clock convention and native geometry
+
+For this expansion, t=0 is the moment of maximum impact coupling and closest
+Earth-source/Mars-source COM approach at simulation time 2.1667 hours. First
+material contact occurs about 15 minutes earlier, at t=-0.25 hour. The Earth spin
+period is the simulated 23.9344696 hours.
+
+The following visibility trace uses the repository's native encounter orientation,
+not the deliberately rotated exact-antipode thought experiment. At maximum impact,
+the Earth-Mars line points toward approximately 73.2 degrees E and essentially the
+equator in the simulation's geographic labels. Gold Butte is about 131 degrees from
+that sub-Mars point: nearly opposite in longitude, but roughly 49 degrees north of
+the exact antipode. That difference is why Mars is visible during the two preceding
+days and then sets, rather than remaining beneath Gold Butte throughout the approach.
+
+Local noon is interpreted as apparent solar noon. On August 15-17, sunrise and
+sunset at Gold Butte are approximately 04:56 and 19:04 local solar time. Mountain
+Daylight Time is roughly 1 hour 25-30 minutes later. Thus the final 20:34 solar-time
+setting is near 22:00 MDT. If "local noon" instead means 12:00 MDT, the elapsed
+simulation intervals are unchanged but the illumination times shift by about 1.5
+hours.
+
+Final visibility trace
+
+ Time                 t (hr)   Altitude / event          Azimuth    Diameter
+ -----------------------------------------------------------------------------
+ Aug 15 12:00         -48.00   31.9 deg                  136.8 SE    0.765 deg
+ Aug 15 14:21         -45.64   first culmination, 40.6   179.9 S     0.799 deg
+ Aug 15 18:00         -42.00   21.7 deg                  241.7 SW    0.852 deg
+ Aug 15 20:20         -39.66   first upper-limb set      269.5 W     0.887 deg
+ Aug 16 08:31         -27.49   upper-limb rise           90.7 E      1.189 deg
+ Aug 16 10:00         -26.00   13.7 deg                  107.7 ESE   1.249 deg
+ Aug 16 12:00         -24.00   30.4 deg                  134.6 SE    1.338 deg
+ Aug 16 14:31         -21.48   final culmination, 40.1   179.8 S     1.467 deg
+ Aug 16 18:00         -18.00   22.9 deg                  238.7 SW    1.675 deg
+ Aug 16 20:00         -16.00   4.5 deg                   262.8 W     1.820 deg
+ Aug 16 20:22         -15.63   lower limb touches        W           1.850 deg
+ Aug 16 20:28         -15.54   center sets               W           1.858 deg
+ Aug 16 20:34         -15.44   upper limb disappears     269.0 W     1.866 deg
+ Aug 17 00:00         -12.00   center 31.4 deg below     NW          2.222 deg
+ Aug 17 06:00          -6.00   center 32.5 deg below     NE          3.724 deg
+ Aug 17 10:11          -1.81   center -12.2 deg          86.7 E      9.443 deg
+ Aug 17 11:45          -0.25   first contact, hidden     NE         ~25 deg
+ Aug 17 12:00           0.00   maximum impact, hidden    N          ~28 deg
+
+Mars's last direct disappearance is therefore 15 hours 26 minutes before maximum
+impact. The final geometric setting takes 11.5 minutes from lower-limb contact to
+upper-limb disappearance. Its topocentric distance is approximately 201,000 km and
+its diameter is 1.866 degrees: 3.6 lunar diameters and nearly thirteen lunar-disk
+areas. Refraction and the actual western horizon could shift final visibility by
+about 5-10 minutes, changing the diameter only to roughly 1.86-1.88 degrees.
+
+Mars remains a waxing crescent. The Sun-Mars elongation grows only from about 38 to
+41 degrees; the illuminated fraction changes from about 10.6 percent at t=-48 hours
+to 12.2 percent at final setting. In a cold, present-like optical recasting, it is a
+large dusty copper crescent surrounding an earthlit, dim red night hemisphere. A
+rough Lambertian estimate gives integrated magnitude near -10 at t=-48 hours and
+-12.2 before horizon extinction at final setting. These optical estimates explicitly
+discard the SPH profile's artificial 2000 K starting surface.
+
+The phase barely changes; the size does. At the two culminations, separated by about
+24.16 hours, Mars grows from 0.799 to 1.467 degrees, an 84 percent increase. Between
+successive settings it grows from 0.887 to 1.866 degrees, more than doubling. Its
+motion relative to the stars is initially only about 0.03 degree per hour, rises to
+0.09 degree per hour at the first setting, and reaches about 0.40 degree per hour at
+the final setting. The Moon normally moves about 0.55 degree per hour relative to
+the stars. Mars therefore rises, culminates, and sets much like a star for most of
+the interval. It appears to remain nearly fixed in the stellar sphere while swelling.
+
+The first and second culminations occur at 14:21 and 14:31, only ten minutes apart
+in local solar time. Mars moves roughly 3.5 degrees east against the stars between
+them, much less than the Moon's approximately 13 degrees per day. Its simulated
+24.623-hour spin also presents nearly the same hemisphere at successive
+culminations, shifted by only about seven degrees. The result is the uncanny return
+of almost the same face, nearly twice as wide.
+
+Tidal-stress and earthquake framework
+
+Ordinary lunar solid-Earth tides impose crustal stresses of order 1 kPa. Scaling
+that stress with the Mars tidal potential gives the following maximum characteristic
+stress. It is not the resolved Coulomb stress on any individual fault; orientation,
+dip, pore pressure, and the sign of the tidal phase all matter.
+
+ Time       Peak solid tide   Lunar multiple   Stress scale
+ -----------------------------------------------------------
+ -48 h          0.93 m             4.1            ~4 kPa
+ -36 h          1.86 m             8.3            ~8 kPa
+ -30 h          2.88 m            12.8           ~13 kPa
+ -24 h          4.88 m            21.6          ~20-30 kPa
+ -18 h          9.58 m            42.5          ~40-60 kPa
+ -15.4 h       13.70 m            60.8         ~60-100 kPa
+ -12 h         24.53 m           109             ~0.1 MPa
+  -8 h         62.29 m           276             ~0.3 MPa
+  -6 h        120.37 m           534             ~0.5 MPa
+  -4 h        304.79 m          1350             ~1-2 MPa
+  -3 h        590.34 m          2620             ~2-4 MPa
+  -2 h          1.50 km         6670             ~5-10 MPa
+  -1 h          nonlinear      32600             tens of MPa formally
+
+Typical crustal-earthquake stress drops are about 0.1-10 MPa. Before t~-12 hours,
+Mars primarily triggers faults already storing tectonic stress; it advances their
+failure times but does not supply the earthquake energy. Around t=-6 to -4 hours,
+the imposed tide itself enters earthquake stress-drop territory. From then onward,
+separate earthquakes become superposed on forced regional and planetary deformation.
+
+The local fault inventory
+
+The immediate Sweet Grass Hills are ordinarily quiet. An analysis of the Montana
+Bureau of Mines and Geology 1982-2015 catalog finds no located earthquakes within
+25 km of Gold Butte, six within 50 km (mostly magnitude 2-3), and a magnitude 4.4
+event about 58 km away in 1994. Detection thresholds varied, so this does not exclude
+microseismicity, but it confirms that Gold Butte is not normally an active seismic
+center.
+
+The first likely local structures are two short, subparallel faults north and
+northwest of Gold Butte. They strike about 58 degrees (northeast-southwest), appear
+to be normal faults down to the northwest, and have a combined end-to-end length of
+about 5.7 km. One has a nearly continuous "fresh" scarp, the other a "prominent"
+scarp; the southern fault may preserve older left-lateral motion. Their dip,
+recurrence, and last-event age are unknown. Whole-length rupture corresponds only
+approximately to an Mw~5-5.7 event and is not guaranteed.
+
+Middle Butte also contains cooling joints, radial and concentric dikes and sills,
+intrusive-country-rock contacts, mineralized zones, old mine workings, and abundant
+angular talus. The broader hills contain northeast- and northwest-striking faults
+probably inherited from Precambrian basement fabrics and repeatedly reactivated.
+Longer regional structures include fault-bounded blocks of the Sweetgrass Arch and
+the Pendroy, Scapegoat-Bannatyne, Cat Creek, and Havre structural trends. They are
+not all active surface faults at Gold Butte, but they can transmit or host larger
+regional events as the forcing grows.
+
+Earthquake progression
+
+t=-48 to -36 hours: The tide is only 4-8 lunar tides. Increased microearthquakes on
+fluid-filled fractures are plausible, with occasional M1-M2 events and perhaps an
+M3 on a fault already at failure. A shallow M2 could sound like a distant thump; an
+M3 might dislodge unstable talus. The summit remains mechanically normal.
+
+t=-36 to -30 hours: At 8-13 kPa, a regional microearthquake swarm becomes likely.
+Most events remain below human perception. There may be isolated audible cracking,
+small rockfalls, and an occasional M3-M4 regionally. This is triggering, not crustal
+failure.
+
+t=-30 to -24 hours: At 13-30 kPa, locally felt M2.5-M4 events become plausible.
+Unstable mine workings and talus fail first; saturated pond margins and loose
+glacial deposits slump. Springs and wells change as fractures open and close. A
+nearby M4 produces several seconds of sharp shaking but does not erase the hill.
+
+t=-24 to -18 hours: The response becomes a multi-fault episode: frequent
+microearthquakes, repeated M3-M4 events, possible M4-M5 ruptures within tens of
+kilometres, and long-period arrivals from larger events farther west. Slip begins
+patchily on the mapped Gold Butte faults; some may be aseismic. A complete local
+rupture would be roughly M5-class and would cause violent summit rockfall, but is
+not deterministic.
+
+t=-18 to -15.4 hours: While the final enormous Mars crescent is still visible,
+microseismic activity is nearly continuous. Felt M3-M4 events may recur on
+tens-of-minutes scales, an M5 local event becomes credible, and regional M5-M6
+events can send long-period motion through the hills. Sharp local jolts, distant
+rolling waves, slow tidal tilt, and persistent rockfall become superposed.
+
+t=-15.4 to -12 hours: After Mars has set, the forcing doubles toward 0.1 MPa.
+Repeated M3-M5 events, patchy failure of both local scarps, contact-zone cracking,
+and rock avalanches are plausible. The visible cause has disappeared, but the
+seismic sequence accelerates.
+
+t=-12 to -8 hours: Multiple local and regional structures can be active at once.
+M4-M6 events across northern Montana or southern Alberta become plausible, while
+large earthquakes at critically stressed global plate boundaries send additional
+waves through the site. The record comprises seconds-long local shocks,
+minutes-long regional and teleseismic surface waves, and hours-long forced tilt.
+
+t=-8 to -6 hours: With 0.3-0.5 MPa forcing, local M4-M5 events and regional M6-class
+events are credible, but magnitude depends on available rupture area rather than
+tidal stress alone. Many faults slip aseismically. Talus slopes become continuously
+mobile and already loosened sedimentary foothills fail more readily than diorite.
+
+t=-6 to -4 hours: The load approaches 1-2 MPa. The two mapped faults almost
+certainly move if mechanically continuous; old basement structures, dikes, and
+intrusive contacts reactivate; new fractures bridge between them. Individual
+earthquakes still occur, but they ride on continuous forced motion.
+
+t=-4 to -2 hours: Several-MPa forcing produces distributed rupture, repeated slip,
+new fault growth, large-scale lithospheric bending, and increasing lower-crustal
+participation. M6-M7 regional ruptures are possible on sufficiently long inherited
+structures, but the dominant local phenomenon is simultaneous motion on many
+orientations, not one giant Gold Butte earthquake.
+
+t=-2 to -1 hour: The formal stress reaches ordinary to high earthquake stress-drop
+values and linear elasticity is failing. Fault friction is no longer the sole
+control; intact bridges break, deep crust deforms, and the ground acquires a
+coherent forced velocity. Mainshock, aftershock, and tidal deformation cease to be
+cleanly separable categories.
+
+Weather and atmospheric response
+
+The atmosphere partly follows the changing gravitational equipotential, so the raw
+solid-tide height is not an atmospheric pressure change. A simple hydrostatic
+residual estimate gives:
+
+ Time       Pressure-tide scale       Interpretation
+ ---------------------------------------------------------------
+ -48 h          <0.1 hPa              hidden in weather noise
+ -24 h          ~0.4 hPa              globally detectable
+ -15.4 h        ~1 hPa                measurable, still weather-like
+ -12 h          ~2 hPa                suspicious coherent changes
+  -8 h          ~5 hPa                weather-system scale
+  -6 h         ~10 hPa                major change in a few hours
+  -4 h         ~25 hPa                severe nonmeteorological forcing
+  -3 h         tens of hPa            hydrostatic estimate degrading
+  -2 h onward   nonlinear             dynamically coupled atmosphere
+
+These are order-of-magnitude scales; normal modes, topography, and ocean-atmosphere
+coupling can change amplitude and phase. For the first day, August weather remains
+weather: a representative clear summit afternoon is in the upper 60s or low 70s F,
+with an exposed breeze and a night in the 40s. The Mars tide does not directly heat
+the air and produces no pre-impact aurora or global firelight.
+
+During the final visible day, a 0.4-1 hPa tidal pressure signal is locally
+indistinguishable from ordinary weather, though meteorologists recognize its global
+coherence. After Mars sets, the signal grows through 1-5 hPa: winds change without
+a front, dust rises from several valleys at once, and orographic clouds form and
+dissipate at the wrong times. By t=-6 hours, a roughly 10 hPa change over a few
+hours resembles a rapidly deepening storm without normal synoptic structure. By
+t=-4 hours, 20-30 hPa mechanical forcing, seismic dust, fires, landslides, and moving
+terrain make ordinary forecasting meaningless. Temperature changes remain modest
+until impact; wind, pressure, dust, and ground motion are the hazards.
+
+When the anomaly becomes undeniable
+
+Astronomically, it is undeniable before this interval: at t=-48 hours Mars is
+already 0.765 degree wide, a resolved daylight crescent larger than the Moon.
+Globally, extraordinary ocean tides, synchronized seismicity, and geodetic motion
+make the crisis obvious by t~-30 to -24 hours. Locally, without looking at Mars or
+using instruments, repeated small earthquakes, rockfalls, changing springs, and
+pond seiches become difficult to dismiss around t=-24 to -18 hours. By t=-12 hours,
+recurrent earthquakes, metre-scale regional motion, and abnormal pressure and wind
+make denial impossible. Static-ground intuition fails around t=-6 to -4 hours.
+
+
+WHERE THE RELIABILITY TRANSITION OCCURS
+---------------------------------------
+
+The cold-Earth recast matters enormously until approximately +30 to +60 minutes:
+
+- Before impact, it controls rock strength, fracture, landslides, atmosphere and
+  ocean response.
+- During the first shock, it controls whether the craton fragments, melts or
+  vaporizes locally.
+- After the Gold Butte parcel has been shocked to multi-GPa pressures and moved at
+  hundreds of metres per second, its original 300 K versus the SPH model’s
+  artificial 2,000 K surface temperature becomes secondary for the bulk trajectory.
+
+But the simulation does not become locally accurate in every respect. Its roughly
+260-km surface smoothing, absence of a crust, ocean and atmosphere, and fluid
+equation of state mean that absolute local pressure, temperature, fragment size and
+sky conditions remain uncertain. What becomes increasingly credible is the
+large-scale conclusion: within about an hour after contact, the material that
+constituted Gold Butte has entered a planetary hydrodynamic flow, and by the
+following day no recognizable Sweet Grass Hills—or stable North American
+surface—remains.

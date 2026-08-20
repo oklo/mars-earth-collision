@@ -1,0 +1,29 @@
+{
+  "states": "outputs/forward_tides/clumps_36h.json",
+  "model_config": {
+    "radius_key": "r99",
+    "dynamical_efficiency": 0.01,
+    "dynamical_eta_suppression": 2.0,
+    "dynamical_energy_cap_fraction": 0.25,
+    "equilibrium_tides": true,
+    "equilibrium_max_eccentricity": 0.3,
+    "equilibrium_detachment_factor": 1.2,
+    "dt_s": 20.0,
+    "duration_s": 129600.0,
+    "output_cadence_s": 300.0
+  },
+  "efficiency_grid": [
+    0.0,
+    0.001,
+    0.01,
+    0.1
+  ],
+  "ensemble_samples_per_cell": 32,
+  "seed": 20260813,
+  "uncertainty_model": {
+    "outer_position_sigma_km_per_component": 100.0,
+    "outer_velocity_sigma_m_s_per_component": 20.0,
+    "inner_position_sigma_km_per_component": 50.0,
+    "inner_velocity_sigma_m_s_per_component": 10.0
+  }
+}

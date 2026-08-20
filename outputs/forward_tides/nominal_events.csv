@@ -1,0 +1,4 @@
+type,pair,time_s,time_hr_after_36h,absolute_simulation_time_hr,separation_m,roche_limit_m,radius_key,contact_radius_m
+roche_entry,mars_secondary,20700.0,5.75,41.75,9176714.022274407,9182290.597792523,r99,
+roche_entry,earth_secondary,102240.0,28.4,64.4,20347067.672676895,20402133.211772628,r99,
+contact,earth_secondary,104043.91627842082,28.901087855116895,64.9010878551169,7884950.763961902,,r99,7885006.1100122575

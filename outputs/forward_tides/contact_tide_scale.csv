@@ -1,0 +1,5 @@
+pair,evaluation_distance,distance_m,dynamical_efficiency,energy_scale_J,fraction_of_orbital_binding,fraction_of_inbound_radial_kinetic,caveat
+earth_mars,r99_contact,10354251.521104556,0.0,0.0,0.0,0.0,marginal linear-tide estimate at geometric contact; hydrodynamics dominates
+earth_mars,r99_contact,10354251.521104556,0.001,7.711104111457812e+26,0.0005934869574808028,0.0002204160288860502,marginal linear-tide estimate at geometric contact; hydrodynamics dominates
+earth_mars,r99_contact,10354251.521104556,0.01,7.711104111457813e+27,0.005934869574808028,0.002204160288860502,marginal linear-tide estimate at geometric contact; hydrodynamics dominates
+earth_mars,r99_contact,10354251.521104556,0.1,7.7111041114578125e+28,0.059348695748080285,0.02204160288860502,marginal linear-tide estimate at geometric contact; hydrodynamics dominates

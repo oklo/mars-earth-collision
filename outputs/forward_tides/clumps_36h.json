@@ -1,0 +1,137 @@
+{
+  "model": "three largest friends-of-friends clumps",
+  "snapshot": "/Users/greglaughlin/Projects/earth-mars-swift/trial_mars_earth_grazing/snapshots_settled_n200000_19h_to_36h/mars_earth_grazing_settled_n200000_19h_to_36h_1020.hdf5",
+  "labels": "/Users/greglaughlin/Projects/earth-mars-swift/trial_mars_earth_grazing/mars_earth_grazing_settled_n200000_labels_coast_eroded.hdf5",
+  "snapshot_time_s": 129600.0,
+  "particle_count_snapshot": 218257,
+  "fof_link_length_m": 500000.0,
+  "frame": "three-clump center of mass and zero total momentum",
+  "bodies": [
+    {
+      "name": "earth_remnant",
+      "particle_count": 199512,
+      "mass_kg": 6.021665131773261e+24,
+      "position_m": [
+        173870.0431688428,
+        13926632.602457106,
+        -3863.231495678425
+      ],
+      "velocity_m_s": [
+        -46.45470137393966,
+        -5.8889807694588105,
+        -0.0017444353297445883
+      ],
+      "radii_m": {
+        "r95": 6492165.307009084,
+        "r99": 6617361.194977872,
+        "rmax": 7106142.944056941
+      },
+      "source_mass_fraction": {
+        "earth": 0.9858067663770251,
+        "mars": 0.014193233622975004
+      },
+      "material_mass_fraction": {
+        "forsterite": 0.7032232917772354,
+        "Fe85Si15": 0.29677670822276464
+      },
+      "spin_angular_momentum_kg_m2_s": [
+        -4.5409605376056254e+30,
+        -1.1189214707784975e+31,
+        1.1219068554935862e+34
+      ],
+      "rigid_spin_omega_rad_s": [
+        -4.480407184313986e-08,
+        -1.2232775805558522e-07,
+        0.00012686918176417727
+      ],
+      "rigid_spin_period_hr": 13.756913283298845,
+      "k2": 0.3,
+      "equilibrium_Q": 100.0,
+      "mode_coupling_weight": 1.0
+    },
+    {
+      "name": "mars_remnant",
+      "particle_count": 17857,
+      "mass_kg": 5.4896285956056084e+23,
+      "position_m": [
+        -1062822.970275402,
+        -147049860.6006851,
+        38888.42437374592
+      ],
+      "velocity_m_s": [
+        475.44969804758466,
+        98.26273467234074,
+        -0.049032834158715906
+      ],
+      "radii_m": {
+        "r95": 3509551.149164877,
+        "r99": 3736890.326126683,
+        "rmax": 4144643.9482520567
+      },
+      "source_mass_fraction": {
+        "earth": 0.03704653529219405,
+        "mars": 0.962953464707806
+      },
+      "material_mass_fraction": {
+        "forsterite": 0.7109041166408905,
+        "Fe85Si15": 0.2890958833591097
+      },
+      "spin_angular_momentum_kg_m2_s": [
+        4.7849227377140897e+30,
+        6.694003156858531e+29,
+        1.3800137473748297e+33
+      ],
+      "rigid_spin_omega_rad_s": [
+        1.7734285340601952e-06,
+        1.7072529111577242e-07,
+        0.0005148933683675615
+      ],
+      "rigid_spin_period_hr": 3.389670388066436,
+      "k2": 0.3,
+      "equilibrium_Q": 100.0,
+      "mode_coupling_weight": 1.0
+    },
+    {
+      "name": "mars_secondary",
+      "particle_count": 682,
+      "mass_kg": 2.09822568394884e+22,
+      "position_m": [
+        -22091848.50737095,
+        -149488493.820918,
+        91257.37810140848
+      ],
+      "velocity_m_s": [
+        892.6794575183205,
+        -880.7976088660856,
+        1.783488331982321
+      ],
+      "radii_m": {
+        "r95": 1207865.9356163663,
+        "r99": 1267644.915034385,
+        "rmax": 1283240.666155165
+      },
+      "source_mass_fraction": {
+        "earth": 0.0,
+        "mars": 1.0
+      },
+      "material_mass_fraction": {
+        "forsterite": 1.0,
+        "Fe85Si15": 0.0
+      },
+      "spin_angular_momentum_kg_m2_s": [
+        9.660039460441832e+28,
+        -3.456819978647151e+28,
+        4.2029300737452433e+30
+      ],
+      "rigid_spin_omega_rad_s": [
+        7.88042952060218e-06,
+        -3.1235731853415877e-06,
+        0.00032006192210988645
+      ],
+      "rigid_spin_period_hr": 5.451187126983697,
+      "k2": 0.3,
+      "equilibrium_Q": 100.0,
+      "mode_coupling_weight": 1.0
+    }
+  ]
+}

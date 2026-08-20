@@ -1,0 +1,29 @@
+Use case: precise-object-edit
+Asset type: cinematic editorial image for a science/literary blog
+Input image: exact edit target, 1821 × 864 pixels.
+
+EDIT ONLY MARS AND THE MOON. Keep the complete framing and every terrestrial and atmospheric element identical to the input: same dimensions, crop, camera, horizon at the same pixel row, sky gradient, mountain silhouette, dark prairie, stark conical Gold Butte, rock detail, stage, band, audience, equipment, lights, flare, exposure, color, and texture. Do not regenerate, zoom, move, relight, reshape, or crop the landscape or stage.
+
+Mars:
+- Increase Mars's apparent angular diameter by a factor of exactly TWO relative to the input image.
+- Preserve its current horizontal position and nearly the same center position. The existing Mars is roughly centered near x=435 px, y=235 px; double it about that center.
+- The enlarged Mars's lower limb must JUST TOUCH the distant horizon: exact visual tangency, with no gap and no overlap or sinking below the horizon. The horizon passes near y=345–350 px. Mars is setting.
+- Preserve the same crescent phase, illuminated-left/lower-left geometry, warm sunset rim, softly visible night side, subtle reddish surface detail, dry-air realism, and natural optical integration.
+- Do not turn Mars into Earth, the Moon, the Sun, a balloon, or a fantasy planet.
+
+Moon:
+- Increase the Moon's apparent angular diameter by the same factor of exactly TWO relative to the input image.
+- Preserve the same waxing-crescent phase, illumination direction, lunar coloration, and natural sharpness.
+- Move the Moon MUCH farther away from Mars. Put it high in the clear cobalt sky, substantially to the RIGHT of Mars, approximately near x=1100–1200 px and y=90–130 px. This yields a center-to-center separation of about 3 to 3.5 of the NEW enlarged Mars diameters.
+- Keep it comfortably clear of Mars, the horizon, mountains, stage, and frame edges.
+- There must be exactly one Moon.
+
+Scale relationships:
+- New Mars diameter = 2 × input Mars diameter.
+- New Moon diameter = 2 × input Moon diameter.
+- Preserve the existing approximate Mars:Moon diameter ratio of 4:1.
+- New Moon–Mars center separation ≈ 3–3.5 new Mars diameters.
+
+Photorealism: exact documentary-cinema realism of the input. Natural crescent edges, compatible atmospheric extinction, no excessive glow, no halos, no stars, no text, no labels, no watermark, and no additional celestial objects.
+
+Absolute invariant: outside the localized sky regions containing old/new Mars and old/new Moon, the image must remain compositionally identical to the input.

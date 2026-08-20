@@ -6,7 +6,18 @@ intended for scientifically informed presentation and animation development:
 they use differentiated ANEOS bodies, settled-body initial conditions, and
 advected tracer colors on Earth's surface and the Mars impactor.
 
-The latest direct inertial-frame animation is:
+The 200k-particle hero SPH calculation is complete through 92 simulated hours
+(`331200 s`).  The latest blog-ready global-view animation reaches about 89
+hours and carries the narrative civil-time clock beginning at 10:00 AM MDT on
+August 17:
+
+[outputs/movies/mars_earth_grazing_settled_n200000_89h_global_view_mdt_10am_179s.mp4](outputs/movies/mars_earth_grazing_settled_n200000_89h_global_view_mdt_10am_179s.mp4)
+
+The matching wide-camera cut of the first four simulated hours is:
+
+[outputs/movies/mars_earth_first4h_standard_wide_mdt_10am_30s.mp4](outputs/movies/mars_earth_first4h_standard_wide_mdt_10am_30s.mp4)
+
+The earlier 36-hour diagnostic master remains available at:
 
 [outputs/movies/mars_earth_grazing_settled_n200000_36h_direct_view_75s.mp4](outputs/movies/mars_earth_grazing_settled_n200000_36h_direct_view_75s.mp4)
 
@@ -21,7 +32,9 @@ An ApJ-style draft manuscript is available as both source and PDF:
 
 ## Direct-View Sequence
 
-Frames below are extracted from the earlier 45-second inertial-frame animation; the newest movie extends the same direct-view style to 36 simulated hours.
+Frames below are extracted from the earlier 45-second inertial-frame animation.
+The newer global-view movie uses a wider fixed camera so the surviving remnant
+and extended debris stream remain legible through the second encounter.
 
 | Initial | Approach |
 |---|---|
@@ -42,6 +55,19 @@ Large multi-GB snapshot time series are documented in
 [manifests/LARGE_ARTIFACTS.md](manifests/LARGE_ARTIFACTS.md) rather than stored
 directly in Git.
 
+The hero run completed normally in two additional stages: 36--72 hours and
+72--92 hours.  The final snapshot contains 215,299 SPH particles at exactly
+92.0 hours.  The movies show a strong second encounter and long tidal/accretion
+stream, but qualitative interpretation beyond first renewed contact remains
+hydrodynamic and resolution-sensitive; a new final-clump analysis is still
+needed before assigning permanent bound or escaped outcomes.
+
+The pre-continuation three-clump calculation and its finite-radius caveats are
+documented in [docs/forward_tides_note.md](docs/forward_tides_note.md).  Its
+point-mass trajectories cease to be predictive at the first Roche/contact-scale
+encounter; the completed SPH continuation is the relevant calculation after
+that point.
+
 ## What is here
 
 - `make_mars_earth_ic.py`: builds differentiated ANEOS Fe85Si15/forsterite Earth- and Mars-mass SPH bodies with WoMa, combines them on a grazing trajectory, and writes a SWIFT HDF5 IC.
@@ -50,6 +76,10 @@ directly in Git.
 - `plot_initial_conditions.py`: makes a quick XY preview PNG.
 - `*_labels.hdf5`: visualization sidecar keyed by `ParticleIDs`, with `BodyID`, `SurfaceClass`, longitude/latitude, and RGB colors.
 - The default `--n-total 5000` request currently becomes 7,421 actual particles because SEAGen adjusts shell populations.
+- `src/forward_tides_model.py`: three-clump Newtonian, finite-radius, dynamical-tide, and gated equilibrium-tide forward model initialized at 36 hours.
+- `src/plot_mars_earth_toomre.py`: scale-aware Earth--Mars--Moon approach diagrams used in the accompanying narrative.
+- `src/retime_animation_clock.py`: replaces the simulation elapsed-time label with a configurable civil-time clock.
+- `docs/gold_butte_impact_timeline.txt`: scientifically conservative narrative extrapolation from a geologically static Sweet Grass Hills vantage into the SPH regime.
 
 ## Current physical assumptions
 

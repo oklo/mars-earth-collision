@@ -1,0 +1,13 @@
+radius_key,dynamical_efficiency,outcome,first_contact_pair,first_contact_hr_after_36h,first_contact_absolute_hr,total_dynamical_tide_energy_J,tidal_passage_count,roche_entries,equilibrium_ever_active
+r95,0.0,earth_secondary_contact,earth_secondary,28.906656456044704,64.9066564560447,0.0,2,earth_secondary;mars_secondary,0
+r95,0.001,earth_secondary_contact,earth_secondary,28.906659198427107,64.9066591984271,1.1277919228802693e+23,2,earth_secondary;mars_secondary,0
+r95,0.01,earth_secondary_contact,earth_secondary,28.906683882326384,64.90668388232638,1.1277848050877509e+24,2,earth_secondary;mars_secondary,0
+r95,0.1,earth_secondary_contact,earth_secondary,28.906930964557503,64.9069309645575,1.1277136188381444e+25,2,earth_secondary;mars_secondary,0
+r99,0.0,earth_secondary_contact,earth_secondary,28.90103871235168,64.90103871235168,0.0,2,earth_secondary;mars_secondary,0
+r99,0.001,earth_secondary_contact,earth_secondary,28.90104362584844,64.90104362584844,2.0300804173562697e+23,2,earth_secondary;mars_secondary,0
+r99,0.01,earth_secondary_contact,earth_secondary,28.901087855116895,64.9010878551169,2.0300520710164474e+24,2,earth_secondary;mars_secondary,0
+r99,0.1,earth_secondary_contact,earth_secondary,28.90153092048765,64.90153092048766,2.0297685302422053e+25,2,earth_secondary;mars_secondary,0
+rmax,0.0,earth_secondary_contact,earth_secondary,28.885414726674668,64.88541472667467,0.0,2,earth_secondary;mars_secondary,0
+rmax,0.001,earth_secondary_contact,earth_secondary,28.885422573932516,64.88542257393252,3.2416286582345974e+23,2,earth_secondary;mars_secondary,0
+rmax,0.01,earth_secondary_contact,earth_secondary,28.885493218414062,64.88549321841407,3.241539973780746e+24,2,earth_secondary;mars_secondary,0
+rmax,0.1,earth_secondary_contact,earth_secondary,28.88620156175053,64.88620156175053,3.2406526314604846e+25,2,earth_secondary;mars_secondary,0

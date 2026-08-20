@@ -1,6 +1,6 @@
 # Reproducibility Manifest
 
-Generated/updated: 2026-07-13 local time
+Generated/updated: 2026-08-20 local time
 
 ## Builds
 - Fixed-entropy settling SWIFT: `/Users/greglaughlin/Projects/earth-mars-swift/swift/swift`
@@ -138,3 +138,52 @@ Checksums:
 - `mars_earth_grazing_settled_n50000_30s_refined_midframe.png` sha256=a89dd8e20bb25d42e24ecd26e76bad06602040f38a59f7a5dae457939aef8b4b
 - `mars_earth_grazing_settled_n100000_30s_refined.mp4` sha256=ad6e61042c4b5949311a0846a0b05c4b96a29f0e372e036e1f38c7a979f7f8c2
 - `mars_earth_grazing_settled_n100000_30s_refined_midframe.png` sha256=8400623082bc698b64ae677d22f31293deeba0702bb32906e9e34fc58fd96e71
+
+## 36-to-92-hour Hero Continuation
+
+The entropy-evolving `n200000` run was continued in two completed stages.
+Both logs end with `main: done. Bye.`
+
+| stage | snapshots | final time | final particles | snapshot storage |
+|---|---:|---:|---:|---:|
+| 36--72 h | 2,700 | `259200 s` | 218,251 | about 52 GB |
+| 72--92 h | 1,080 | `331200 s` | 215,299 | about 21 GB |
+
+Continuation inputs:
+
+- `mars_earth_grazing_settled_n200000_36h_to_72h.yml` sha256=19e6ce7b1a185c470f2d752b901641c94f1578a3d4b9ab78fd492073b35771a3
+- `mars_earth_grazing_settled_n200000_36h_to_72h_output_times.txt` sha256=b3abc037011b4ee325f35d06fee641ea0dcabb2d9d4aa221e356cc681814c8fa
+- `mars_earth_grazing_settled_n200000_36h_to_72h_ic.hdf5` sha256=5e8e9881b19bfc3c71bb33bd78104d7d2adb130e16226541338873a8837caf2e
+- `mars_earth_grazing_settled_n200000_72h_to_92h.yml` sha256=07932a08fe4ee683721a3f67ec1b6655148ba2305fda556f1ae1d231a35c28a5
+- `mars_earth_grazing_settled_n200000_72h_to_92h_output_times.txt` sha256=132183654a0c340b9d1513421293b5eff7dd43d1ec35fa99c558ef2c037c3fdd
+- `mars_earth_grazing_settled_n200000_72h_to_92h_ic.hdf5` sha256=63b9fa718ad4667ec7a55fc29c4773a85ce27bcdeb2ceb227d9f36902202a2d4
+
+Final snapshot, retained only in the large working tree:
+
+- `mars_earth_grazing_settled_n200000_72h_to_92h_1079.hdf5` size=20743965 bytes, sha256=b3a241779f10ac12ef1fdf59a11186d6950cae60cba2d31170d09830d0474a9b
+
+The final particle count is lower than at 72 hours.  Any mass or binding census
+must audit the SWIFT removals rather than silently treating all absent IDs as
+accreted material.
+
+## Narrative Animation Products
+
+Both final presentation movies are H.264, `yuv420p`, 1920×1080, 24 fps, and
+have fast-start metadata for web playback.
+
+- `mars_earth_first4h_standard_wide_mdt_10am_30s.mp4`: 720 frames, 30.0 s, 996189 bytes, sha256=4a441124876f5f1a310676940b51f79a2bda3dbf6e09868ad97261db381431f4
+- `mars_earth_grazing_settled_n200000_89h_global_view_mdt_10am_179s.mp4`: 4,289 frames, 178.708333 s, 7800463 bytes, sha256=47ff3105fcde8d69e563122716f6e9f3c901ebb63d719738be1adbad8ef56cd2
+
+The civil clock begins at August 17, 10:00 AM MDT.  It is a narrative mapping
+onto simulation time, not a timestamp carried by SWIFT.  The long movie was
+rendered before the last three simulated hours completed and therefore reaches
+about 89 hours, while the calculation itself reaches 92 hours.
+
+Supporting source products:
+
+- `src/retime_animation_clock.py` sha256=1f2a236dea41e0aebae2dea8ad5b69577e9e237cec2202ec3db37db5b006a40a
+- `src/plot_mars_earth_toomre.py` sha256=2bd6f67bc6afa0d52adc7a6958e0df3e7e42ef2d3e18691e4b56449a10a3e3a6
+- `docs/gold_butte_impact_timeline.txt` sha256=19ceb01885f692fb44618d06e788405e68e020b9fa6d0df5636754a8bc63dc5d
+- `docs/figures/mars_earth_toomre_tminus48h.png` sha256=8b163f4a48a6e171a763e719522863ee9428ed8aa4d57aed65005d50ca23e9ef
+- `docs/figures/mars_earth_toomre_last_mars_set.png` sha256=9b3e300fed3a2e8be91cb66bbb37c1e45eaf810a371e76bdd3380a7a7ec5db51
+- `docs/figures/gold_butte_last_mars_set_concert_v5.png` sha256=662570c5e59702f9c3a671b645df1d04502cfc021c0fae7bfe45deaca614f4f6
