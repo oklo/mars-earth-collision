@@ -16,6 +16,15 @@ These directories were deliberately left out of the GitHub-ready project because
 | `snapshots_settled_n50000_4h/` | 257 MB | 50k resolution ladder run. |
 | `snapshots_settled_n20000_4h/` | 115 MB | 20k resolution ladder run. |
 | `snapshots_relax_earth_n200000/` | 92 MB | Earth relaxation snapshots. |
+| `snapshots_relax_mars_n200000/` | 12 MB | Mars relaxation snapshots. |
+
+Smaller relaxation and smoke-test directories also remain in the working tree:
+
+| Directory group | Approx. combined size | Notes |
+|---|---:|---|
+| `snapshots_relax_earth{,_n20000,_n50000,_n100000}/` | 90 MB | Low-resolution through 100k Earth relaxation products. |
+| `snapshots_relax_mars{,_n20000,_n50000,_n100000}/` | 14 MB | Low-resolution through 100k Mars relaxation products. |
+| `snapshots_smoke/`, `snapshots_settled_smoke/` | 5 MB | Initial workflow validation runs. |
 
 The combined snapshot directories in the original working tree are symlink-based and report as near-zero disk usage locally:
 

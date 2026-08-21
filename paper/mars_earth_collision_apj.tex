@@ -20,11 +20,14 @@ outcomes, rather than to establish a converged impact outcome.  Initial bodies
 are generated with WoMa, relaxed in SWIFT, assembled on a grazing trajectory,
 and evolved with self-gravity and hydrodynamics.  Surface tracer particles are
 advected with the flow and colored to indicate terrestrial land/ocean material
-and the Mars impactor.  The current high-resolution visualization uses
-218,271 SPH particles, an impact angle of 70 degrees from head-on, and a
-contact velocity of 1.02 times the mutual escape speed.  The animation shows
-strong tidal deformation of the impactor, a grazing exchange of material, and a
-departing Mars remnant embedded in a debris stream.  We emphasize the
+and the Mars impactor.  The high-resolution calculation begins with 218,271 SPH
+particles, an impact angle of 70 degrees from head-on, and a contact velocity of
+1.02 times the mutual escape speed.  It has been evolved through 92 simulated
+hours, with 215,299 particles present in the final snapshot.  The calculation
+shows strong tidal deformation and stripping during the initial grazing passage,
+followed by a second finite-size encounter and an extended debris stream.  The
+available calculation does not yet establish the final binding hierarchy.  We
+emphasize the
 distinction between this presentation-quality simulation product and a
 publication-quality convergence study: future work must quantify energy and
 angular-momentum conservation, equation-of-state sensitivity, resolution
@@ -64,15 +67,17 @@ iron-silicate objects using ANEOS Fe85Si15 and forsterite material tables.
 Separate Earth and Mars bodies are first relaxed, then assembled into an impact
 configuration.
 
-The main rendered calculation uses a requested resolution of
+The main calculation uses a requested resolution of
 $N_{\rm total}=200{,}000$, yielding 218,271 particles after shell population
-adjustments and subsequent particle handling.  The nominal impact geometry is a
-70 degree angle from head-on, with an initial contact speed of
-$1.02\,v_{\rm esc}$, where $v_{\rm esc}$ is the two-body mutual escape speed.
-The trajectory is initialized about two hours before nominal contact and is
-continued to nine hours of simulated time.  The exact configuration files,
-diagnostics, compact initial-condition products, and logs are included in the
-repository.
+adjustment.  The nominal impact geometry is a 70 degree angle from head-on, with
+an initial contact speed of $1.02\,v_{\rm esc}$, where $v_{\rm esc}$ is the
+two-body mutual escape speed.  The trajectory is initialized about two hours
+before nominal contact and is evolved in stages through 92 hours.  The final
+snapshot contains 215,299 particles; this loss of particle IDs must be audited
+explicitly in any conservation or mass-partition analysis.  Exact configuration
+files and compact continuation inputs are included in the repository.  The
+multi-gigabyte snapshot series and continuation logs remain in the documented
+external SWIFT working tree.
 
 \section{Rendering Method}
 
@@ -86,13 +91,16 @@ map.  The Mars colors use a procedural albedo pattern intended to evoke the
 global appearance of Mars, including ochre dust, darker basaltic provinces, and
 subtle polar frost.
 
-The direct-view movie is rendered in an inertial frame.  The camera is fixed,
-but the projected screen axes are chosen so the final Earth--Mars separation is
-nearly horizontal, allowing the last frame to use the 16:9 aspect ratio
-efficiently.  Bounds are set by robust final-frame Earth and Mars extents,
-excluding distant stray particles.  Surface tracers are drawn as crisp
+The early direct-view movie is rendered in an inertial frame with bounds chosen
+from robust Earth and Mars extents.  The longer presentation movie uses a wider
+fixed global frame so that the main remnant and debris stream remain visible
+through the second encounter.  The renderer intersects persistent particle IDs
+over each selected snapshot sequence.  Surface tracers are drawn as crisp
 depth-sorted points over a dim body-base layer, while the storyboard and
-density-trial renderers provide alternative views for presentation work.
+density-trial renderers provide alternative views for presentation work.  The
+current long-form presentation cut reaches approximately 89 hours; the final
+three simulated hours exist in the snapshot archive but are not included in that
+movie.
 
 \begin{figure*}[t]
 \centering
@@ -109,35 +117,35 @@ particles, not texture maps pasted onto a rendered sphere.}
 
 \section{Current Outcome}
 
-The animation displays a strongly grazing event rather than a direct
-head-on merger.  During the close interaction, the Mars-mass impactor is
-tidally elongated and partially stripped.  Some Mars material is transferred
-into a debris stream and onto/near the target, while a coherent Mars-rich
-remnant continues on a departing trajectory.  The Earth surface tracer field is
-distorted and contaminated by impactor material near the encounter region.  By
-nine hours, the two main mass concentrations are well separated in the
-inertial-frame render, with scattered inter-body debris visible between them.
+The first passage is strongly grazing rather than a direct head-on merger.  The
+Mars-mass impactor is tidally elongated and partially stripped, transfers
+material to the Earth remnant and debris stream, and initially departs as a
+coherent Mars-rich remnant.  A compact Mars-derived secondary is identifiable by
+36 hours, but point-mass integrations initialized from that state predict
+Roche/contact-scale passages and therefore cease to be reliable before the next
+encounter.
 
-The visual result is useful for communicating the physical distinction between
-a point-mass near miss and a hydrodynamical grazing collision.  In particular,
-the impactor does not simply rebound as a rigid body: it is reshaped, stripped,
-and connected to the target by an extended material wake.  At the same time,
-the calculation should not yet be interpreted as a quantitatively robust
-boundary between hit-and-run, merger, and erosion regimes.
+The hydrodynamic continuation confirms that a serious second finite-size
+encounter occurs.  It produces a long tidal/accretion stream and substantial
+rearrangement of the visible clumps.  The 92-hour endpoint has not yet received a
+full particle-binding and source-material census, so visual compactness alone is
+insufficient to label a permanent satellite, merger, survivor, or escaping body.
+The robust conclusion from this realization is renewed hydrodynamic interaction,
+not a final outcome classification.
 
 \section{Limitations and Required Publication Work}
 
 Several steps remain before this workflow can support publication-quality
-physical conclusions.  First, the resolution ladder must be extended and
-analyzed quantitatively.  The present 200k-particle render is suitable for
-visualization, but it is low by the standards of detailed giant-impact outcome
-studies.  Second, conservation diagnostics must be reported systematically for
-the production snapshots: total energy, angular momentum, linear momentum, mass
-partitioning, and thermodynamic state should be tracked as functions of time.
-Third, the initial thermal profile, differentiated structure, equation of
-state, and relaxation procedure should be varied to assess sensitivity.
-Fourth, any outcome classification should be embedded in a grid over impact
-angle, velocity, mass ratio, spin state, and internal structure.
+physical conclusions.  The completed 20k--200k visualization ladder must be
+analyzed quantitatively and extended around the second encounter; a single
+200k-particle realization is low by the standards of detailed giant-impact
+outcome studies.  Conservation diagnostics must be reported systematically:
+total energy, angular momentum, linear momentum, particle removal, mass
+partitioning, and thermodynamic state should be tracked across every continuation
+boundary.  The final snapshot and preceding checkpoints require a persistent-ID
+clump and debris census.  The initial thermal profile, differentiated structure,
+equation of state, relaxation procedure, spin, impact angle, and velocity must be
+varied before assigning an outcome boundary.
 
 The rendering pipeline also imposes interpretive choices.  Surface tracers are
 faithfully advected particle labels, but the land/ocean and Mars albedo maps
@@ -149,9 +157,9 @@ visualization product rather than a radiative-transfer calculation.
 \section{Reproducibility}
 
 The GitHub repository stores the scripts, compact initial-condition files,
-sidecar labels, YAML configuration files, diagnostics, logs, rendered movies,
-and quality-control stills.  The largest generated snapshot directories are
-not stored directly in Git; they are documented in
+sidecar labels, YAML configuration files, selected diagnostics, rendered movies,
+and quality-control stills.  The largest generated snapshot directories and
+continuation logs are not stored directly in Git; they are documented in
 \texttt{manifests/LARGE\_ARTIFACTS.md}.  Recreating the full rendered sequence
 requires the SWIFT and WoMa environments documented in the repository, the
 corresponding snapshot time series, and the renderer commands recorded in the
@@ -159,15 +167,13 @@ README and scripts.
 
 \section{Summary}
 
-We have assembled a local, reproducible workflow for a visually compelling
-Mars--Earth grazing-collision animation.  The current result combines
-differentiated SPH bodies, a high-resolution settled impact run relative to
-the exploratory ladder, advected surface tracers, inertial-frame camera
-choices, and presentation-oriented render products.  The output is appropriate
-as a scientifically informed animation asset and as a foundation for a future
-quantitative study.  Publication-quality impact claims will require a broader
-resolution and parameter survey with explicit conservation and convergence
-tests.
+We have assembled a reproducible workflow and a 92-hour SPH realization of a
+Mars--Earth grazing collision.  The calculation combines differentiated settled
+bodies, advected surface tracers, an initial grazing passage, a later finite-size
+encounter, and presentation-oriented render products.  It is appropriate as a
+scientifically informed animation asset and as a foundation for a quantitative
+study.  Publication-quality outcome claims require a final binding census, an
+explicit conservation audit, and a broader resolution and parameter survey.
 
 \acknowledgments
 This draft was prepared as documentation for a local scientific-visualization

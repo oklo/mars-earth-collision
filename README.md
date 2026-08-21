@@ -68,136 +68,127 @@ point-mass trajectories cease to be predictive at the first Roche/contact-scale
 encounter; the completed SPH continuation is the relevant calculation after
 that point.
 
-## What is here
+## Repository map
 
-- `make_mars_earth_ic.py`: builds differentiated ANEOS Fe85Si15/forsterite Earth- and Mars-mass SPH bodies with WoMa, combines them on a grazing trajectory, and writes a SWIFT HDF5 IC.
-- `mars_earth_grazing_smoke.yml`: 120 s SWIFT smoke test.
-- `mars_earth_grazing_4h.yml`: several-hour parameter file for a low-resolution animation trial.
-- `plot_initial_conditions.py`: makes a quick XY preview PNG.
-- `*_labels.hdf5`: visualization sidecar keyed by `ParticleIDs`, with `BodyID`, `SurfaceClass`, longitude/latitude, and RGB colors.
-- The default `--n-total 5000` request currently becomes 7,421 actual particles because SEAGen adjusts shell populations.
-- `src/forward_tides_model.py`: three-clump Newtonian, finite-radius, dynamical-tide, and gated equilibrium-tide forward model initialized at 36 hours.
-- `src/plot_mars_earth_toomre.py`: scale-aware Earth--Mars--Moon approach diagrams used in the accompanying narrative.
-- `src/retime_animation_clock.py`: replaces the simulation elapsed-time label with a configurable civil-time clock.
-- `docs/gold_butte_impact_timeline.txt`: scientifically conservative narrative extrapolation from a geologically static Sweet Grass Hills vantage into the SPH regime.
+- `src/`: initial-condition, analysis, rendering, clock, and forward-model code.
+- `configs/`: exact SWIFT YAML files used in the local calculation, plus the two nonuniform output-time lists.
+- `data/`: compact IC/restart files, profiles, visualization labels, and bundled Natural Earth vectors.
+- `outputs/movies/`: curated presentation and resolution-ladder movies.
+- `outputs/forward_tides/`: the pre-continuation three-clump model tables and figures.
+- `docs/`: handoff, reproducibility, physical-interpretation, and Gold Butte narrative notes.
+- `manifests/`: generated SWIFT diagnostics and the inventory of large external snapshot series.
+- `paper/`: manuscript source and PDF.
 
-## Current physical assumptions
+Visualization sidecars named `*_labels.hdf5` are keyed by `ParticleIDs` and
+store `BodyID`, `SurfaceClass`, initial longitude/latitude, and RGB colors.
+
+## Physical setup
 
 - Target is Earth mass/radius; impactor is Mars mass/radius.
-- Both are differentiated iron-silicate bodies using SWIFT/WoMa ANEOS Fe85Si15 and forsterite tables.
-- Default geometry is a 70 degree impact angle from head-on, with contact speed 1.02 times mutual escape speed, initialized 2 hours before contact.
-- The initial combined impact file is generated directly from unrelaxed particle planets. This is useful for a first visual run, but production runs should relax Earth and Mars separately before impact assembly.
-- With the hot adiabatic ANEOS setup, the generated Earth analog is mildly inflated at about 1.034 Earth radii; Mars is close to present Mars radius.
+- Both bodies are differentiated ANEOS Fe85Si15/forsterite objects generated with WoMa and evolved with SWIFT planetary SPH.
+- Nominal geometry is 70 degrees from head-on at `1.02` times mutual escape speed, initialized about two hours before nominal contact.
+- The hero calculation uses separately relaxed bodies. The direct, unrelaxed ICs retained in `data/` are legacy visualization and workflow tests, not the production starting point.
+- The hot adiabatic setup mildly inflates the initial Earth analog to about `1.034 R_Earth`; it does not model a cold crust, ocean, or atmosphere.
 
-## Commands
+## Software environment
 
-From this directory:
+The archived Python environment used CPython 3.12. A portable reconstruction is:
 
 ```bash
-/Users/greglaughlin/Projects/earth-mars-swift/.venv/bin/python make_mars_earth_ic.py --n-total 5000
-/Users/greglaughlin/Projects/earth-mars-swift/.venv/bin/python plot_initial_conditions.py
-DYLD_LIBRARY_PATH=/Users/greglaughlin/Projects/earth-mars-swift/.conda-swift/lib /Users/greglaughlin/Projects/earth-mars-swift/swift/swift --hydro --self-gravity --threads=12 mars_earth_grazing_smoke.yml
+python3.12 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
 ```
 
-or:
+SWIFT and FFmpeg are external executables. The impact run requires a SWIFT build
+configured for planetary hydrodynamics and the planetary equation of state; body
+relaxation additionally used a fixed-entropy SWIFT build. Exact build revisions
+and configure lines are recorded in
+[docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md).
+
+The committed YAML files preserve the original calculation, including its local
+ANEOS paths. To run one from another checkout, stage a portable copy with the
+bundled helper. For example:
 
 ```bash
-THREADS=12 ./run_smoke.sh
+SWIFT_ROOT=/path/to/earth-mars-swift
+.venv/bin/python src/prepare_swift_run.py \
+  configs/mars_earth_grazing_smoke.yml \
+  --run-dir runs/smoke \
+  --eos-dir "$SWIFT_ROOT/swift/examples/Planetary/EoSTables"
+
+cd runs/smoke
+"$SWIFT_ROOT/swift/swift" --hydro --self-gravity --threads=12 \
+  mars_earth_grazing_smoke.yml
 ```
 
-For a longer low-resolution animation trial:
+The helper rewrites only the staged YAML, then links the required compact IC and
+output-time list from this repository. Generated snapshots stay under the ignored
+`runs/` directory. Platform-specific shared-library paths may still need to be set
+for the local SWIFT/HDF5 build.
+
+For the legacy direct-body IC generator, run from an ignored working directory:
 
 ```bash
-DYLD_LIBRARY_PATH=/Users/greglaughlin/Projects/earth-mars-swift/.conda-swift/lib /Users/greglaughlin/Projects/earth-mars-swift/swift/swift --hydro --self-gravity --threads=12 mars_earth_grazing_4h.yml
+mkdir -p runs/direct_n05000
+cd runs/direct_n05000
+../../.venv/bin/python ../../src/make_mars_earth_ic.py --n-total 5000
+../../.venv/bin/python ../../src/plot_initial_conditions.py
 ```
 
+SEAGen shell-population adjustment makes the nominal `n_total=5000` request
+7,421 particles. Settled-body assembly uses `src/assemble_settled_impact.py` on
+separately relaxed Earth and Mars snapshots; the original local wrapper scripts
+are historical working-tree utilities and are not part of this curated clone.
+New ladder YAMLs can be generated with `src/make_ladder_configs.py --eos-dir
+/path/to/EoSTables N_TOTAL` or by setting `SWIFT_EOS_DIR`.
 
-## Refined settled-body workflow
+## Resolution and continuation status
 
-Two SWIFT builds are now present:
+| run | requested particles | actual initial particles | simulated duration | external snapshot storage |
+|---|---:|---:|---:|---:|
+| settled `n20000` | 20,000 | 23,749 | 4 h | 115 MB |
+| settled `n50000` | 50,000 | 57,089 | 4 h | 257 MB |
+| settled `n100000` | 100,000 | 112,486 | 4 h | 506 MB |
+| hero `n200000` | 200,000 | 218,271 | 92 h | about 116 GB across stages |
 
-- `/Users/greglaughlin/Projects/earth-mars-swift/swift/swift`: fixed-entropy build for body relaxation only.
-- `/Users/greglaughlin/Projects/earth-mars-swift/swift-impact/swift`: entropy-evolving build for impact runs.
+The hero endpoint contains 215,299 particles. The difference from the initial
+count must be handled explicitly in conservation and mass-budget work; absent IDs
+must not automatically be interpreted as accreted material. The resolution ladder
+establishes rendering continuity, but it has not yet established convergence of
+the second-encounter outcome.
 
-Low-resolution settled workflow:
-
-```bash
-THREADS=12 ./run_relax_lowres.sh
-/Users/greglaughlin/Projects/earth-mars-swift/.venv/bin/python analyze_body_snapshot.py snapshots_relax_earth/earth_relax_n05000_0004.hdf5
-/Users/greglaughlin/Projects/earth-mars-swift/.venv/bin/python analyze_body_snapshot.py snapshots_relax_mars/mars_relax_n05000_0004.hdf5
-THREADS=12 ./run_settled_smoke.sh
-```
-
-Current relaxed-body diagnostics at 20,000 s:
-
-- Earth: 6,427 particles, mass `5.9580e24 kg`, `r_99.5 = 6.170e6 m`, radial velocity RMS `20.99 m/s`.
-- Mars: 994 particles, mass `6.3937e23 kg`, `r_99.5 = 3.061e6 m`, radial velocity RMS `7.05 m/s`.
-
-The settled impact IC is `mars_earth_grazing_settled_n05000.hdf5`; its sidecar labels are `mars_earth_grazing_settled_n05000_labels.hdf5`. The 120 s settled-impact smoke test completed with the entropy-evolving build and wrote `snapshots_settled_smoke/`.
-
-See `REPRODUCIBILITY.md` for configure lines, run products, and checksums.
-
-## Resolution ladder status
-
-Completed settled-body ladder rungs so far:
-
-| label | requested `n_total` | actual particles | impact snapshots | snapshot storage | MP4 |
-|---|---:|---:|---:|---:|---|
-| `n20000` | 20,000 | 23,749 | 49 | 115 MB | `mars_earth_grazing_settled_n20000_30s.mp4` |
-| `n50000` | 50,000 | 57,089 | 49 | 257 MB | `mars_earth_grazing_settled_n50000_30s.mp4` |
-| `n100000` | 100,000 | 112,486 | 49 | 507 MB | `mars_earth_grazing_settled_n100000_30s.mp4` |
-
-Each completed MP4 is 1920x1080, 24 fps, 30.0 s, 720 frames. Verification midframes are written as `mars_earth_grazing_settled_<label>_30s_midframe.png`.
-
-The wrapper that runs a rung and immediately renders/verifies the animation is:
+The current renderer retains full 3-D particle positions, intersects persistent
+IDs across selected snapshots, and draws a dim body layer beneath depth-sorted
+surface tracers. A representative rerender command is:
 
 ```bash
-THREADS=12 ./run_ladder_with_animation.sh 50000 100000
-```
-
-It calls `run_ladder_case.sh` for each requested `n_total`, then renders with `render_impact_animation.py`, runs `ffprobe`, and extracts a midframe. To rerender an existing rung without rerunning SWIFT:
-
-```bash
-FORCE_RENDER=1 ./run_ladder_with_animation.sh 100000
-```
-
-Current relaxed-body diagnostics at 20,000 s:
-
-| label | body | particles | mass kg | r_99.5 m | radial RMS m/s | tangential RMS m/s |
-|---|---|---:|---:|---:|---:|---:|
-| `n20000` | Earth | 21,805 | `5.95833581e24` | `6.30594445e6` | 21.31 | 6.23 |
-| `n20000` | Mars | 1,944 | `6.39455447e23` | `3.11802703e6` | 4.83 | 14.63 |
-| `n50000` | Earth | 51,738 | `5.95849318e24` | `6.37615996e6` | 21.26 | 5.00 |
-| `n50000` | Mars | 5,351 | `6.39487224e23` | `3.19738690e6` | 8.22 | 7.13 |
-| `n100000` | Earth | 101,120 | `5.95858541e24` | `6.41789842e6` | 22.28 | 3.67 |
-| `n100000` | Mars | 11,366 | `6.39535791e23` | `3.24292878e6` | 12.55 | 4.20 |
-
-
-### Refined render pass
-
-The current renderer now keeps full 3D particle positions and draws two visual layers: a dim body-base layer plus a depth-sorted, observer-facing surface layer. Marker sizes scale down with particle count, and Earth surface colors use the existing present-day continent labels with a cleaner land/ocean palette. The refined high-resolution animations use an oblique view vector `0,-0.55,0.84`:
-
-- `mars_earth_grazing_settled_n50000_30s_refined.mp4`
-- `mars_earth_grazing_settled_n100000_30s_refined.mp4`
-
-Render command pattern:
-
-```bash
-env -u DYLD_LIBRARY_PATH /Users/greglaughlin/Projects/earth-mars-swift/.venv/bin/python render_impact_animation.py \
-  --snapshot-dir snapshots_settled_n100000_4h \
+.venv/bin/python src/render_impact_animation.py \
+  --snapshot-dir /path/to/snapshots_settled_n100000_4h \
   --basename mars_earth_grazing_settled_n100000_4h \
-  --labels mars_earth_grazing_settled_n100000_labels.hdf5 \
-  --out mars_earth_grazing_settled_n100000_30s_refined.mp4 \
+  --labels data/mars_earth_grazing_settled_n100000_labels.hdf5 \
+  --out example.mp4 \
   --duration 30 --fps 24 --width 1920 --height 1080 \
   --view-vector 0,-0.55,0.84
 ```
 
-The next practical local rung is likely `n200000`, but that should be treated as an overnight-style run rather than an interactive quick rung. The current movies are scientifically informed visualization prototypes using differentiated ANEOS bodies and advected surface-color tracers; they are not yet convergence-tested publication results.
+## Analysis and narrative products
+
+- `src/forward_tides_model.py` and `docs/forward_tides_note.md`: three-clump Newtonian/tidal model initialized at 36 hours, valid only until the first finite-size encounter.
+- `src/plot_mars_earth_toomre.py`: scale-aware Earth--Mars--Moon approach diagrams.
+- `src/retime_animation_clock.py`: configurable civil-time overlay used for the presentation movies.
+- `docs/gold_butte_impact_timeline.txt`: conservative cold-Earth extrapolation from the Sweet Grass Hills into the SPH regime.
 
 ## Publication-quality next steps
 
-1. Relax separate Earth and Mars bodies for multiple dynamical times and verify stable radius, density profile, angular momentum, energy drift, and low residual velocities.
-2. Combine the settled snapshots, not the direct unrelaxed particles, at the chosen geometry.
-3. Run a resolution ladder and geometry ladder: particle count, angle, velocity, core fraction, impactor spin, and thermal state.
-4. Improve the render pipeline with camera choreography, depth cues, higher-resolution particle renders, and optional compositing while preserving `ParticleIDs` plus sidecar labels so Earth-surface colors advect with material particles.
-5. Track conservation diagnostics per run and archive the exact SWIFT configure line, git commits, parameter files, and EOS table checksums.
+1. Perform the 92-hour remnant, debris, binding, and particle-loss census.
+2. Report energy, angular-momentum, linear-momentum, and mass conservation across every continuation boundary.
+3. Repeat the second encounter at higher resolution and with plausible COM/velocity, radius, spin, thermal-state, angle, and velocity perturbations.
+4. Quantify the boundary between merger, hit-and-run survival, reaccretion, stripping, and ejection rather than inferring it from this realization.
+5. Archive the full snapshot series and exact external software environment in durable object storage or a data repository.
+
+## License
+
+This project is released under the [MIT License](LICENSE). The bundled Natural
+Earth vectors are public-domain data as documented in
+`data/natural_earth/README.md`. External dependencies, including SWIFT and WoMa,
+retain their own licenses.

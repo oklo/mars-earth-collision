@@ -32,8 +32,9 @@ https://www.blm.gov/visit/sweet-grass-hills-1
 QUANTITATIVE APPROACH
 ---------------------
 
-Taking first material contact as t=0, a two-body backward integration from the
-simulation’s initial state gives:
+Taking maximum impact coupling and closest Earth-source/Mars-source COM approach
+as t=0, with first material contact about 15 minutes earlier at t=-0.25 hour, a
+two-body backward integration from the simulation’s initial state gives:
 
  Time       COM distance    Speed       Geocentric Mars     Peak linear
                                        diameter             solid-Earth tide*
@@ -47,7 +48,8 @@ simulation’s initial state gives:
   -2 h       46,000 km      4.78 km/s    8.17 degrees        1.15 km
   -1 h       29,300 km      5.81 km/s   12.84 degrees        4.4 km—nonlinear
  -30 min     20,100 km      6.90 km/s   18.8 degrees         linear theory fails
- Contact     ~10,900 km     ~9.2 km/s   ~35 degrees          hydrodynamic regime
+ Contact
+ (-0.25 h)   ~10,900 km     ~9.2 km/s   ~35 degrees          hydrodynamic regime
 
 * Maximum equilibrium radial displacement at the sub-Mars and anti-Mars points,
   using a present-Earth radial Love number h2 approximately equal to 0.6. It is an

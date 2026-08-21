@@ -13,7 +13,10 @@ from PIL import Image, ImageDraw, ImageFont
 
 
 BACKGROUND = "0x03050a"
-FONT_PATH = Path("/System/Library/Fonts/SFNS.ttf")
+FONT_CANDIDATES = (
+    Path("/System/Library/Fonts/SFNS.ttf"),
+    Path("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"),
+)
 
 
 def parse_args() -> argparse.Namespace:
@@ -29,7 +32,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--minute", type=int, default=0)
     parser.add_argument("--zone", default="MDT")
     parser.add_argument("--font-size", type=int, default=25)
-    parser.add_argument("--font-path", type=Path, default=FONT_PATH)
+    parser.add_argument(
+        "--font-path",
+        type=Path,
+        default=None,
+        help="TrueType/OpenType font; defaults to SF Pro, DejaVu Sans, or Pillow's fallback",
+    )
     parser.add_argument("--clear-x", type=int, default=20)
     parser.add_argument("--clear-y", type=int, default=68)
     parser.add_argument("--clear-width", type=int, default=560)
@@ -52,9 +60,21 @@ def render_overlays(
     sim_hours: float,
     zone: str,
     font_size: int,
-    font_path: Path,
+    font_path: Path | None,
 ) -> None:
-    font = ImageFont.truetype(str(font_path), font_size)
+    if font_path is not None:
+        font = ImageFont.truetype(str(font_path), font_size)
+    else:
+        font = None
+        for candidate in FONT_CANDIDATES:
+            if candidate.is_file():
+                font = ImageFont.truetype(str(candidate), font_size)
+                break
+        if font is None:
+            try:
+                font = ImageFont.truetype("DejaVuSans.ttf", font_size)
+            except OSError:
+                font = ImageFont.load_default(size=font_size)
     for index in range(frames):
         fraction = index / max(frames - 1, 1)
         when = start + timedelta(hours=sim_hours * fraction)

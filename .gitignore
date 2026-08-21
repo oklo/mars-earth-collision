@@ -16,7 +16,10 @@ snapshots*/
 restart/
 frames_*/
 preview_*_snapshots/
+runs/
 
 # Temporary render products
 *.tmp
 *.log
+outputs/movies/archive/
+outputs/qc/archive/

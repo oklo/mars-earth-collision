@@ -1,0 +1,10 @@
+# Versions used for the archived 2026 workflow. SWIFT and FFmpeg are external.
+h5py==3.16.0
+matplotlib==3.11.0
+numba==0.66.0
+numpy==2.4.6
+pillow==12.3.0
+pyshp==3.1.4
+scipy==1.18.0
+woma==1.5.0
+seagen @ git+https://github.com/jkeger/seagen.git@343361931e13e56095b716292196e3d37c385594

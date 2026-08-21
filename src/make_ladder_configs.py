@@ -4,11 +4,13 @@
 from __future__ import annotations
 
 import argparse
+import os
 from pathlib import Path
 
 
 def parse_args():
     p = argparse.ArgumentParser(description=__doc__)
+    default_eos_dir = os.environ.get("SWIFT_EOS_DIR")
     p.add_argument("n_total", type=int)
     p.add_argument("--relax-end", type=float, default=20000.0)
     p.add_argument("--relax-dt-max", type=float, default=1000.0)
@@ -17,6 +19,13 @@ def parse_args():
     p.add_argument("--impact-dt-max", type=float, default=30.0)
     p.add_argument("--impact-snapshot-dt", type=float, default=300.0)
     p.add_argument("--impact-suffix", default="4h", help="Suffix for impact yml, snapshot directory, and basename.")
+    p.add_argument(
+        "--eos-dir",
+        type=Path,
+        default=Path(default_eos_dir) if default_eos_dir else None,
+        required=default_eos_dir is None,
+        help="SWIFT planetary EoSTables directory (or set SWIFT_EOS_DIR)",
+    )
     return p.parse_args()
 
 
@@ -40,12 +49,16 @@ def main() -> None:
     args = parse_args()
     label = f"n{args.n_total:05d}"
     impact_suffix = path_safe_suffix(args.impact_suffix)
+    eos_dir = args.eos_dir.resolve()
+    for table_name in ("ANEOS_forsterite_S19.txt", "ANEOS_Fe85Si15_S20.txt"):
+        if not (eos_dir / table_name).is_file():
+            raise SystemExit(f"EOS table not found: {eos_dir / table_name}")
 
-    eos = """EoS:
+    eos = f"""EoS:
     planetary_use_ANEOS_forsterite:   1
     planetary_use_ANEOS_Fe85Si15:     1
-    planetary_ANEOS_forsterite_table_file:  /Users/greglaughlin/Projects/earth-mars-swift/swift/examples/Planetary/EoSTables/ANEOS_forsterite_S19.txt
-    planetary_ANEOS_Fe85Si15_table_file:    /Users/greglaughlin/Projects/earth-mars-swift/swift/examples/Planetary/EoSTables/ANEOS_Fe85Si15_S20.txt
+    planetary_ANEOS_forsterite_table_file:  {eos_dir / "ANEOS_forsterite_S19.txt"}
+    planetary_ANEOS_Fe85Si15_table_file:    {eos_dir / "ANEOS_Fe85Si15_S20.txt"}
 """
     common_units = """InternalUnitSystem:
     UnitMass_in_cgs:        1e27

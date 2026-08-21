@@ -38,10 +38,7 @@ M_MARS = 6.4171e23
 R_MARS = 3.3895e6
 G_SI = 6.67430e-11
 
-DEFAULT_CONTINENTS = Path(
-    "/Users/greglaughlin/Projects/continents/models/muller2019/"
-    "ContinentalPolygons/Global_PresentDay_ContPolygons_2019_v1.shp"
-)
+DEFAULT_CONTINENTS = PROJECT_ROOT / "data" / "natural_earth" / "ne_110m_land.shp"
 
 
 @dataclass(frozen=True)
